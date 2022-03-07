@@ -15,11 +15,11 @@ class FavoriteCommandTest {
         assertThat(name).isEqualTo(commandData.getName());
     }
 
-    @Test
-    <MessageEmbed> void testThatFavoriteHaveImages() {
-        FavoriteCommand favoriteCommand = new FavoriteCommand();
-        MessageEmbed embed = (MessageEmbed) favoriteCommand.favoriteResturant();
-        // assertThat(embed.getImage().getUrl().isNotEmpty());
+    // @Test
+    // <MessageEmbed> void testThatFavoriteHaveImages() {
+    // FavoriteCommand favoriteCommand = new FavoriteCommand();
+    // MessageEmbed embed = (MessageEmbed) favoriteCommand.favoriteResturant();
+    // // assertThat(embed.getImage().getUrl().isNotEmpty());
 
-    }
+    // }
 }

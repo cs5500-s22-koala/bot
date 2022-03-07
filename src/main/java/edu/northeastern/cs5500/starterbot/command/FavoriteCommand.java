@@ -10,14 +10,16 @@ import net.dv8tion.jda.api.interactions.commands.CommandInteraction;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 
 /**
- * The catch command will return a random resturant from the list and let the user know what the
+ * The catch command will return a random resturant from the list and let the
+ * user know what the
  * resturant is.
  */
 @Singleton
 @Slf4j
 public class FavoriteCommand implements Command {
     @Inject
-    public FavoriteCommand() {}
+    public FavoriteCommand() {
+    }
 
     @Override
     public String getName() {
