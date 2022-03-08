@@ -1,7 +1,5 @@
 package edu.northeastern.cs5500.starterbot.model;
 
-import lombok.Data;
-
 public class User {
     int id;
     String username;
@@ -26,5 +24,4 @@ public class User {
     private void setUsername(String newUsername) {
         this.username = newUsername;
     }
-
 }
