@@ -18,4 +18,10 @@ public class CommandModule {
     public Command provideFavoriteCommand(FavoriteCommand favoriteCommand) {
         return favoriteCommand;
     }
+
+    @Provides
+    @IntoSet
+    public Command providePreferredNameCommand(PreferredNameCommand preferredNameCommand) {
+        return preferredNameCommand;
+    }
 }
