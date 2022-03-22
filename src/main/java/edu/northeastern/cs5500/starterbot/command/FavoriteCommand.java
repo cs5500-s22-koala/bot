@@ -39,7 +39,6 @@ public class FavoriteCommand implements Command {
                 "https://travel.home.sndimg.com/content/dam/images/travel/fullset/2014/08/21/92/seattle-restaurants-with-view-matts-market.rend.hgtvcom.1280.720.suffix/1491585038690.jpeg");
         return embedBuilder.build();
     }
-
     @Override
     public void onEvent(CommandInteraction event) {
         log.info("event: /favorite");
