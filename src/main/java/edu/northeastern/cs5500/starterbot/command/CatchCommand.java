@@ -28,6 +28,7 @@ public class CatchCommand implements Command {
         // TODO Auto-generated method stub
         return "catch";
     }
+    
     @Override
     public void onEvent(CommandInteraction event) {
         // TODO Auto-generated method stub
