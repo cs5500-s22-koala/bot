@@ -19,6 +19,7 @@ public class CommandModule {
         return catchCommand;
     }
 
+    
     @Provides
     @IntoSet
     public Command provideFavoriteCommand(FavoriteCommand favoriteCommand) {
