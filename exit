@@ -1,0 +1,101 @@
+[33mcommit 799d7ecc81e3c75c2605a23fa36f9abd5e145caf[m[33m ([m[1;36mHEAD -> [m[1;32mimplement-save-favoriate-command[m[33m, [m[1;31morigin/implement-save-favoriate-command[m[33m)[m
+Author: Johnspeanut <pengqiong2015fall@hotmail.com>
+Date:   Mon Mar 7 15:14:01 2022 -0800
+
+    remove readme
+
+[33mcommit ee1792953149e1ea0e34f706b8c1789c66e5d936[m
+Author: Johnspeanut <pengqiong2015fall@hotmail.com>
+Date:   Mon Mar 7 15:08:55 2022 -0800
+
+    Reformat the code
+
+[33mcommit d1c4ee30e4fc0c0209ee801923b4ad3b5df089fa[m
+Author: Johnspeanut <pengqiong2015fall@hotmail.com>
+Date:   Mon Mar 7 14:56:50 2022 -0800
+
+    Edit the format
+
+[33mcommit ae9a850dfffcb5cdc0f068cd5cf616e700120e74[m
+Author: Johnspeanut <pengqiong2015fall@hotmail.com>
+Date:   Mon Mar 7 14:33:58 2022 -0800
+
+    Implement the favorite command
+
+[33mcommit c982a3591c3ad3dda22f360c875adca67ddaa844[m[33m ([m[1;31morigin/qiongpeng[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mqiongpeng[m[33m, [m[1;32mmain[m[33m)[m
+Author: Johnspeanut <pengqiong2015fall@hotmail.com>
+Date:   Sat Feb 12 14:48:50 2022 -0800
+
+    first push readme.md
+
+[33mcommit 8687d89ad90bc85e8491370e23eb60e8a4670cf7[m
+Author: Alexander Lash <abl@users.noreply.github.com>
+Date:   Fri Feb 11 22:47:21 2022 -0800
+
+    Repository scaffolding
+
+[33mcommit 9f407a63e77a5fcb53d837332b746cfd8b93a7c1[m
+Author: Alexander Lash <167740+abl@users.noreply.github.com>
+Date:   Fri Feb 11 18:14:13 2022 -0800
+
+    Update core prefs workaround
+
+[33mcommit 98b64c3fed1295a8329342772624c32ce6cb179a[m
+Author: Alexander Lash <167740+abl@users.noreply.github.com>
+Date:   Fri Feb 11 18:12:01 2022 -0800
+
+    Add recommended/necessary extensions
+
+[33mcommit 59bb75160deb0cd6493e94f60259f39a6ebe3085[m
+Author: Alexander Lash <167740+abl@users.noreply.github.com>
+Date:   Fri Feb 11 17:27:23 2022 -0800
+
+    Modernize and daggerize
+
+[33mcommit 7fd565f7c82b07be8586bb73b068f4ce69589bc9[m
+Author: Alexander Lash <167740+abl@users.noreply.github.com>
+Date:   Fri Feb 11 16:55:11 2022 -0800
+
+    JDK 11
+
+[33mcommit 71771b08bde7c1a77a91050bf14e46037b1cea89[m
+Author: Alexander Lash <167740+abl@users.noreply.github.com>
+Date:   Fri Nov 12 22:37:06 2021 -0800
+
+    Add some new actions
+
+[33mcommit 4028ced50366265f736eda417dec4c52e731cf09[m
+Author: Alexander <167740+abl@users.noreply.github.com>
+Date:   Thu Nov 11 20:23:29 2021 +0000
+
+    Set up Tailscale
+
+[33mcommit c0261a262a82c53e4f703b5c341cd4381683c69c[m
+Author: Alexander <167740+abl@users.noreply.github.com>
+Date:   Tue Nov 9 12:54:13 2021 -0800
+
+    Only run deployment on pushes to main
+
+[33mcommit 05e188c065ea775d6e3fc2ded326a670e59465be[m
+Author: Alexander <167740+abl@users.noreply.github.com>
+Date:   Wed Nov 3 01:35:33 2021 -0700
+
+    Update .gitignore
+
+[33mcommit f31460eef9f54aacc204b6182a0af537953e7ef3[m
+Author: Alexander <167740+abl@users.noreply.github.com>
+Date:   Wed Nov 3 01:23:52 2021 -0700
+
+    Create org.eclipse.jdt.core.prefs
+
+[33mcommit fcb816fe1943fe3f691f4079807fe360a1b3d029[m
+Author: Alexander Lash <167740+abl@users.noreply.github.com>
+Date:   Sat Oct 2 02:01:53 2021 -0700
+
+    Change over to JDK 8
+
+[33mcommit 5a50f86a69841dd2bd17642d7b31033f96ebd081[m
+Author: Alexander Lash <167740+abl@users.noreply.github.com>
+Date:   Fri Oct 1 23:35:43 2021 -0700
+
+    Initial commit
