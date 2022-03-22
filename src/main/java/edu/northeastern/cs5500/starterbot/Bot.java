@@ -14,7 +14,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
 
-@Component(modules = {CommandModule.class, RepositoryModule.class})
+@Component(modules = { CommandModule.class, RepositoryModule.class })
 @Singleton
 interface BotComponent {
     public Bot bot();
@@ -23,9 +23,11 @@ interface BotComponent {
 public class Bot {
 
     @Inject
-    Bot() {}
+    Bot() {
+    }
 
-    @Inject MessageListener messageListener;
+    @Inject
+    MessageListener messageListener;
 
     static String getBotToken() {
         return new ProcessBuilder().environment().get("BOT_TOKEN");
@@ -38,10 +40,9 @@ public class Bot {
             throw new IllegalArgumentException(
                     "The BOT_TOKEN environment variable is not defined.");
         }
-        JDA jda =
-                JDABuilder.createLight(token, EnumSet.noneOf(GatewayIntent.class))
-                        .addEventListeners(messageListener)
-                        .build();
+        JDA jda = JDABuilder.createLight(token, EnumSet.noneOf(GatewayIntent.class))
+                .addEventListeners(messageListener)
+                .build();
 
         CommandListUpdateAction commands = jda.updateCommands();
         commands.addCommands(messageListener.allCommandData());

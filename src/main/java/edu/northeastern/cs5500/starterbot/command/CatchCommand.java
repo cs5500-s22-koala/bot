@@ -13,7 +13,8 @@ import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 public class CatchCommand implements Command {
 
     @Inject
-    public CatchCommand() {}
+    public CatchCommand() {
+    }
 
     @Override
     public CommandData getCommandData() {
