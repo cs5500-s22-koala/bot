@@ -15,11 +15,6 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command provideCatch(CatchCommand catchCommand) {
-        return catchCommand;
-    }
-    @Provides
-    @IntoSet
     public Command provideFavoriteCommand(FavoriteCommand favoriteCommand) {
         return favoriteCommand;
     }
