@@ -10,14 +10,14 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 @Singleton
 @Slf4j
-public class SayCommand implements Command {
+public class PreferredNameCommand implements Command {
 
     @Inject
-    public SayCommand() {}
+    public PreferredNameCommand() {}
 
     @Override
     public String getName() {
-        return "say";
+        return "perfername";
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SayCommand implements Command {
 
     @Override
     public void onEvent(CommandInteraction event) {
-        log.info("event: /say");
+        log.info("event: /perferName");
         event.reply(event.getOption("content").getAsString()).queue();
     }
 }
