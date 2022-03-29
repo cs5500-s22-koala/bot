@@ -16,8 +16,7 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 public class FavoriteCommand implements Command {
 
     @Inject
-    public FavoriteCommand() {
-    }
+    public FavoriteCommand() {}
 
     @Override
     public String getName() {
@@ -29,9 +28,9 @@ public class FavoriteCommand implements Command {
         return new CommandData(getName(), "List your favorite resturant")
                 .addOptions(
                         new OptionData(
-                                OptionType.STRING,
-                                "content",
-                                "The bot will reply to your command with a list of resturants")
+                                        OptionType.STRING,
+                                        "content",
+                                        "The bot will reply to your command with a list of resturants")
                                 .setRequired(true));
     }
 
