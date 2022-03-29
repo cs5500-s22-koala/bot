@@ -13,7 +13,8 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 public class SayCommand implements Command {
 
     @Inject
-    public SayCommand() {}
+    public SayCommand() {
+    }
 
     @Override
     public String getName() {
@@ -25,9 +26,9 @@ public class SayCommand implements Command {
         return new CommandData(getName(), "Ask the bot to reply with the provided text")
                 .addOptions(
                         new OptionData(
-                                        OptionType.STRING,
-                                        "content",
-                                        "The bot will reply to your command with the provided text")
+                                OptionType.STRING,
+                                "content",
+                                "The bot will reply to your command with the provided text")
                                 .setRequired(true));
     }
 

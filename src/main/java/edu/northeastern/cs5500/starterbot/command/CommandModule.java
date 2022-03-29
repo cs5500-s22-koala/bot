@@ -15,7 +15,7 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command providePreferredNameCommand(FavoriteCommand favoriteCommand) {
+    public Command provideFavoriteCommand(FavoriteCommand favoriteCommand) {
         return favoriteCommand;
     }
 }
