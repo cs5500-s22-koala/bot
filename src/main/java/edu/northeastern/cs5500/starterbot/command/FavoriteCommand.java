@@ -4,7 +4,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.interactions.commands.CommandInteraction;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
@@ -38,9 +37,6 @@ public class FavoriteCommand implements Command {
     @Override
     public void onEvent(CommandInteraction event) {
         log.info("event: /favorite");
-        event.reply(event.getOption("content").getAsString()).queue();
-        MessageBuilder messageBuilder = new MessageBuilder();
-        messageBuilder.setEmbeds(favoriteResturant());
-        event.reply(messageBuilder.build()).queue();
+        event.getChannel().sendMessage(favoriteResturant()).queue();
     }
 }
