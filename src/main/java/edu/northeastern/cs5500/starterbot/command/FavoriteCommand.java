@@ -7,9 +7,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.interactions.commands.CommandInteraction;
-import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
-import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 @Singleton
 @Slf4j
@@ -25,13 +23,7 @@ public class FavoriteCommand implements Command {
 
     @Override
     public CommandData getCommandData() {
-        return new CommandData(getName(), "List your favorite resturant")
-                .addOptions(
-                        new OptionData(
-                                        OptionType.STRING,
-                                        "content",
-                                        "The bot will reply to your command with a list of resturants")
-                                .setRequired(true));
+        return new CommandData(getName(), "List your favorite resturant");
     }
 
     MessageEmbed favoriteResturant() {
