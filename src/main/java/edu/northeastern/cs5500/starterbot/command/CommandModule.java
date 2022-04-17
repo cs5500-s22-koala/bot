@@ -25,4 +25,10 @@ public class CommandModule {
             ListRestaurantOnNameCommand listRestaurantOnNameCommand) {
         return listRestaurantOnNameCommand;
     }
+
+    @Provides
+    @IntoSet
+    public Command providePreferredNameCommand(PreferredNameCommand preferredNameCommand) {
+        return preferredNameCommand;
+    }
 }
