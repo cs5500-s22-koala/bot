@@ -24,7 +24,7 @@ public class RestaurantController {
         // }
     }
 
-    public void addRestaurant(String name, String cuisineType, int zipcode, String imageUrl) {
+    public void addRestaurant(String name, String cuisineType, long zipcode, String imageUrl) {
         Restaurant restaurant = new Restaurant();
         restaurant.setCuisineType(cuisineType);
         restaurant.setName(name);

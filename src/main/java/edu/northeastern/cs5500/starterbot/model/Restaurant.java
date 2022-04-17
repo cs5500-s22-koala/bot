@@ -16,6 +16,6 @@ public class Restaurant implements Model {
     double averageCostPerGuest;
     Set<Integer> ordersPlaced;
     String address;
-    int zipcode;
+    long zipcode;
     String imageUrl;
 }

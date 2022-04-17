@@ -6,9 +6,9 @@ import org.bson.types.ObjectId;
 @Data
 public class Customer implements Model {
     ObjectId id;
-    int customerId;
+    String customerId;
     String customerName;
-    int phone;
+    String phone;
     String address;
     String bankAccount;
 }
