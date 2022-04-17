@@ -16,6 +16,7 @@ public class RepositoryModule {
         return repository;
     }
 
+
     @Provides
     public Class<UserPreference> provideUserPreference() {
         return UserPreference.class;
