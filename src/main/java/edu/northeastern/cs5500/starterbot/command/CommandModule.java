@@ -43,4 +43,16 @@ public class CommandModule {
     public Command provideGetRestaurantCommand(GetRestaurantCommand getRestaurantCommand) {
         return getRestaurantCommand;
     }
+
+    @Provides
+    @IntoSet
+    public Command provideAddDishCommand(AddDishCommand addDishCommand) {
+        return addDishCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideShowMenuCommand(ShowMenuCommand showMenuCommand) {
+        return showMenuCommand;
+    }
 }
