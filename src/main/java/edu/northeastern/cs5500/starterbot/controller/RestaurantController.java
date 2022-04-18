@@ -25,6 +25,7 @@ public class RestaurantController {
     }
 
     public void addRestaurant(String name, String cuisineType, long zipcode, String imageUrl) {
+        // TODO: better check duplication of restaurant names, only allow unique name
         Restaurant restaurant = new Restaurant();
         restaurant.setCuisineType(cuisineType);
         restaurant.setName(name);
@@ -33,7 +34,7 @@ public class RestaurantController {
         restaurantRepository.add(restaurant);
     }
 
-    @Nonnull
+    //    @Nonnull  // it could be Null, right?
     public Restaurant getSpecificRestaurantBasedOnName(String restuarantName) {
         Collection<Restaurant> restaurants = restaurantRepository.getAll();
         Restaurant result = null;
@@ -43,7 +44,6 @@ public class RestaurantController {
                 break;
             }
         }
-
         return result;
     }
 
