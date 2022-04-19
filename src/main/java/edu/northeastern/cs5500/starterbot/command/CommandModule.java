@@ -55,4 +55,16 @@ public class CommandModule {
     public Command provideShowMenuCommand(ShowMenuCommand showMenuCommand) {
         return showMenuCommand;
     }
+
+    @Provides
+    @IntoSet
+    public Command provideAddDishToCartCommand(AddDishToCartCommand addDishToCartCommand) {
+        return addDishToCartCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideCancelCommand(CancelCommand cancelCommand) {
+        return cancelCommand;
+    }
 }

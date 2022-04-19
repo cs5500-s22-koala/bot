@@ -1,7 +1,6 @@
 package edu.northeastern.cs5500.starterbot.command;
 
 import edu.northeastern.cs5500.starterbot.controller.RestaurantController;
-import edu.northeastern.cs5500.starterbot.service.MongoDBService;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
@@ -60,9 +59,6 @@ public class AddRestaurantCommand implements Command {
         String cuisinType = event.getOption("cuisinetype").getAsString();
         long zipcode = event.getOption("zipcode").getAsLong();
         String imageUrl = event.getOption("imageurl").getAsString();
-
-        MongoDBService mongoDBService =
-                new MongoDBService(); // don't think it is necessary to write this line
 
         restaurantController.addRestaurant(restaurantName, cuisinType, zipcode, imageUrl);
 

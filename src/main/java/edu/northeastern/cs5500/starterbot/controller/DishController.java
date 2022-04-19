@@ -49,4 +49,15 @@ public class DishController {
         }
         return menu;
     }
+
+    public Dish findADish(String dishName, String restaurantName) {
+        Collection<Dish> dishes = dishRepository.getAll();
+        for (Dish dish : dishes) {
+            if (dish.getDishName().equals(dishName)
+                    && dish.getRestaurantName().equals(restaurantName)) {
+                return dish;
+            }
+        }
+        return null;
+    }
 }

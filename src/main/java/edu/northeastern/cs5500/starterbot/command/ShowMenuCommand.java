@@ -41,7 +41,7 @@ public class ShowMenuCommand implements Command {
     }
 
     @Override
-    public void onEvent(@Nonnull CommandInteraction event) {
+    public void onEvent(CommandInteraction event) {
         log.info("event: /showMenuCommand");
         String restaurant = event.getOption("restaurantname").getAsString();
         List<Dish> menu = dishController.getMenuOfARestaurant(restaurant);
