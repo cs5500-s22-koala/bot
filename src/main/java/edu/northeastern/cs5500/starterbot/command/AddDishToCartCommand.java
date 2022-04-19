@@ -53,7 +53,7 @@ public class AddDishToCartCommand implements Command {
     }
 
     @Override
-    public void onEvent(@Nonnull CommandInteraction event) {
+    public void onEvent(CommandInteraction event) {
         log.info("event: /addDishToCart");
         int quantity = (int) event.getOption("quantity").getAsLong();
         String dishName = event.getOption("dishname").getAsString();

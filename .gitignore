@@ -133,3 +133,5 @@ gradle-app.setting
 # Necessary to keep Dagger errors from propagating.
 !.settings/org.eclipse.jdt.core.prefs
 
+# intellij project's settings
+.idea/
