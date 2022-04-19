@@ -1,7 +1,6 @@
 package edu.northeastern.cs5500.starterbot.command;
 
 import edu.northeastern.cs5500.starterbot.controller.RestaurantController;
-import edu.northeastern.cs5500.starterbot.service.MongoDBService;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
