@@ -39,27 +39,6 @@ public class GetRestaurantCommand implements Command {
     public void onEvent(CommandInteraction event) {
         log.info("event: /getrestaurant");
         String restaurantName = event.getOption("name").getAsString();
-        //        List<Restaurant> listRestaurant = RestaurantLoad.loadRestaurant(restaurantName);
-        //        List<StringBuilder> builders = new ArrayList<StringBuilder>();
-        //        builders.add(new StringBuilder());
-        //
-        //        for (Restaurant restaurant : listRestaurant) {
-        //            StringBuilder lastStringBuilder = builders.get(builders.size() - 1);
-        //            lastStringBuilder.append(
-        //                    restaurant.getName()
-        //                            + " "
-        //                            + restaurant.getCuisineType()
-        //                            + " "
-        //                            + restaurant.getZipcode()
-        //                            + "\n");
-        //        }
-        //
-        //        // Send message
-        //        if (listRestaurant.isEmpty()) {
-        //            event.reply("There are no restaurants on this server.").queue();
-        //        } else {
-        //            for (StringBuilder sb : builders) event.reply(sb.toString()).queue();
-        //        }
 
         Restaurant result = restaurantController.getSpecificRestaurantBasedOnName(restaurantName);
         if (result == null) {

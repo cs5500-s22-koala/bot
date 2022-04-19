@@ -61,9 +61,6 @@ public class AddRestaurantCommand implements Command {
         long zipcode = event.getOption("zipcode").getAsLong();
         String imageUrl = event.getOption("imageurl").getAsString();
 
-        MongoDBService mongoDBService =
-                new MongoDBService(); // don't think it is necessary to write this line
-
         restaurantController.addRestaurant(restaurantName, cuisinType, zipcode, imageUrl);
 
         if (restaurantName == null || cuisinType == null || zipcode == 0 || imageUrl == null) {
