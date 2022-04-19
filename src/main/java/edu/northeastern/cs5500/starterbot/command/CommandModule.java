@@ -15,13 +15,6 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command provideListRestaurantOnNameCommand(
-            ListRestaurantOnNameCommand listRestaurantOnNameCommand) {
-        return listRestaurantOnNameCommand;
-    }
-
-    @Provides
-    @IntoSet
     public Command providePreferredNameCommand(PreferredNameCommand preferredNameCommand) {
         return preferredNameCommand;
     }

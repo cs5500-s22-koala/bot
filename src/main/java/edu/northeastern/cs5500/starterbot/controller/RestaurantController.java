@@ -5,7 +5,6 @@ import edu.northeastern.cs5500.starterbot.repository.GenericRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
 public class RestaurantController {
@@ -15,16 +14,9 @@ public class RestaurantController {
     @Inject
     RestaurantController(GenericRepository<Restaurant> restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
-
-        // if (restaurantRepository.count() == 0) {
-        //     Restaurant restaurant = new Restaurant();
-        //     restaurant.setName("Koala Restaurant");
-        //     restaurant.setCuisineType("Chinese");
-        //     restaurantRepository.add(restaurant);
-        // }
     }
 
-    public void addRestaurant(String name, String cuisineType, long zipcode, String imageUrl) {
+    public void addRestaurant(String name, String cuisineType, int zipcode, String imageUrl) {
         // TODO: better check duplication of restaurant names, only allow unique name
         Restaurant restaurant = new Restaurant();
         restaurant.setCuisineType(cuisineType);
@@ -33,8 +25,7 @@ public class RestaurantController {
         restaurant.setImageUrl(imageUrl);
         restaurantRepository.add(restaurant);
     }
-
-    //    @Nonnull  // it could be Null, right?
+    // If not found, return null
     public Restaurant getSpecificRestaurantBasedOnName(String restuarantName) {
         Collection<Restaurant> restaurants = restaurantRepository.getAll();
         Restaurant result = null;
@@ -46,8 +37,23 @@ public class RestaurantController {
         }
         return result;
     }
+    // If updated return true
+    public boolean updateRestaurant(String name, String cuisineType, int zipcode, String imageUrl) {
+        boolean foundFlag = false;
+        Collection<Restaurant> restaurants = restaurantRepository.getAll();
+        for (Restaurant restaurant : restaurants) {
+            if (restaurant.getName().equals(name)) {
+                restaurant.setCuisineType(cuisineType);
+                restaurant.setImageUrl(imageUrl);
+                restaurant.setZipcode(zipcode);
+                foundFlag = true;
+                break;
+            }
+        }
+        return foundFlag;
+    }
 
-    @Nonnull
+    // If not found, return empty list
     public List<Restaurant> getRestaurantsBasedOnCuisineType(String cuisineType) {
         Collection<Restaurant> restaurants = restaurantRepository.getAll();
         List<Restaurant> result = new ArrayList<>();
@@ -59,7 +65,7 @@ public class RestaurantController {
         return result;
     }
 
-    @Nonnull
+    // If not found, return empty list
     public List<Restaurant> getRestaurantsBasedOnZipcode(int zipcode) {
         Collection<Restaurant> restaurants = restaurantRepository.getAll();
         List<Restaurant> result = new ArrayList<>();

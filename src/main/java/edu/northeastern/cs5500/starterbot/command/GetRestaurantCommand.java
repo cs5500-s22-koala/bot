@@ -2,6 +2,7 @@ package edu.northeastern.cs5500.starterbot.command;
 
 import edu.northeastern.cs5500.starterbot.controller.RestaurantController;
 import edu.northeastern.cs5500.starterbot.model.Restaurant;
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
@@ -19,14 +20,16 @@ public class GetRestaurantCommand implements Command {
     @Inject
     public GetRestaurantCommand() {}
 
+    @Nonnull
     @Override
     public String getName() {
-        return "getrestaurant";
+        return "get-restaurant";
     }
 
+    @Nonnull
     @Override
     public CommandData getCommandData() {
-        return new CommandData(getName(), "Tell the bot what name to address you with")
+        return new CommandData(getName(), "Tell the bot what restaurant name is")
                 .addOptions(
                         new OptionData(
                                         OptionType.STRING,
@@ -36,8 +39,8 @@ public class GetRestaurantCommand implements Command {
     }
 
     @Override
-    public void onEvent(CommandInteraction event) {
-        log.info("event: /getrestaurant");
+    public void onEvent(@Nonnull CommandInteraction event) {
+        log.info("event: /getRestaurant");
         String restaurantName = event.getOption("name").getAsString();
 
         Restaurant result = restaurantController.getSpecificRestaurantBasedOnName(restaurantName);
