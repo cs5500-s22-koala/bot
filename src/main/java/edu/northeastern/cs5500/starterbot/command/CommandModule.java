@@ -12,4 +12,10 @@ public class CommandModule {
     public Command provideSayCommand(SayCommand sayCommand) {
         return sayCommand;
     }
+
+    @Provides
+    @IntoSet
+    public Command provideWelcomeCommand(WelcomeCommand welcomeCommand) {
+        return welcomeCommand;
+    }
 }
