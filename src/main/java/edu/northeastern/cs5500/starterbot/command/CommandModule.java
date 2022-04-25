@@ -39,6 +39,20 @@ public class CommandModule {
 
     @Provides
     @IntoSet
+    public Command provideGetRestaurantOnZipcodeCommand(
+            GetRestaurantOnZipcodeCommand getRestaurantOnZipcodeCommand) {
+        return getRestaurantOnZipcodeCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideGetRestaurantOnZipcodeCuisineTypeCommand(
+            GetRestaurantOnZipcodeCuisineTypeCommand getRestaurantOnZipcodeCuisineTypeCommand) {
+        return getRestaurantOnZipcodeCuisineTypeCommand;
+    }
+
+    @Provides
+    @IntoSet
     public Command provideAddDishCommand(AddDishCommand addDishCommand) {
         return addDishCommand;
     }

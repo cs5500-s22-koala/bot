@@ -76,4 +76,18 @@ public class RestaurantController {
         }
         return result;
     }
+
+    // If not found, return empty list
+    public List<Restaurant> getRestaurantsBasedOnZipcodeCuisineType(
+            int zipcode, String cuisineType) {
+        Collection<Restaurant> restaurants = restaurantRepository.getAll();
+        List<Restaurant> result = new ArrayList<>();
+        for (Restaurant currentRestaurant : restaurants) {
+            if (currentRestaurant.getZipcode() == zipcode
+                    && currentRestaurant.getCuisineType().equals(cuisineType)) {
+                result.add(currentRestaurant);
+            }
+        }
+        return result;
+    }
 }
