@@ -2,10 +2,13 @@ package edu.northeastern.cs5500.starterbot.command;
 
 import edu.northeastern.cs5500.starterbot.controller.RestaurantController;
 import edu.northeastern.cs5500.starterbot.model.Restaurant;
+import java.awt.Color;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.interactions.commands.CommandInteraction;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
@@ -48,7 +51,15 @@ public class GetRestaurantCommand implements Command {
             event.reply("No restaurant named " + restaurantName + " on the server").queue();
         } else {
             // TODO: Come up with a better format to display restaurant info
-            event.reply(result.toString()).queue();
+            MessageEmbed eb =
+                    new EmbedBuilder()
+                            .setImage(result.getImageUrl())
+                            .setTitle(result.getName())
+                            .setColor(Color.GREEN)
+                            .addField("Cuisine Type:", result.getCuisineType(), true)
+                            .addField("Zip code:", "" + result.getZipcode(), true)
+                            .build();
+            event.getChannel().sendMessage(eb).queue();
         }
     }
 }
