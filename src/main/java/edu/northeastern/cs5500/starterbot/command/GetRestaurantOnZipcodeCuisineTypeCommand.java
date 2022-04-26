@@ -59,15 +59,17 @@ public class GetRestaurantOnZipcodeCuisineTypeCommand implements Command {
                     .queue();
         } else {
             // TODO: Come up with a better format to display restaurant info
+            StringBuilder sb = new StringBuilder();
             for (Restaurant restaurant : result) {
-                event.reply(
-                                restaurant.getName()
-                                        + " "
-                                        + restaurant.getCuisineType()
-                                        + " "
-                                        + restaurant.getZipcode())
-                        .queue();
+                sb.append(
+                        restaurant.getName()
+                                + " "
+                                + restaurant.getCuisineType()
+                                + " "
+                                + restaurant.getZipcode()
+                                + "\n");
             }
+            event.getChannel().sendMessage(sb.toString()).queue();
         }
     }
 }
