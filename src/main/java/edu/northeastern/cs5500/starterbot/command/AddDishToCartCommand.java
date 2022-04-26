@@ -58,17 +58,32 @@ public class AddDishToCartCommand implements Command {
         int quantity = (int) event.getOption("quantity").getAsLong();
         String dishName = event.getOption("dishname").getAsString();
         String restaurant = event.getOption("restaurantname").getAsString();
+        String discordUserId = event.getUser().getId();
 
         Dish dishToAdd = dishController.findADish(dishName, restaurant);
+        String restaurantInCart = shoppingCart.getCurrentRestaurantOfUser(discordUserId);
+
+        log.info("discordUserID: " + event.getUser().getId());
+        log.info("current restaurant " + restaurant);
+        log.info("shopping cart restaurant " + restaurantInCart);
+
         if (dishToAdd == null) {
             event.reply("Please enter valid dish or restaurant name ").queue();
+        } else if (restaurantInCart != null && !restaurant.equals(restaurantInCart)) {
+            log.info("two restaurants are not the same");
+            //            event.reply(
+            //                            "Please enter dish from restaurant "
+            //                                    + restaurantInCart
+            //                                    + " or /cancel shopping cart")
+            //                    .queue();
+            event.getChannel()
+                    .sendMessage(
+                            "Please enter dish from restaurant "
+                                    + restaurantInCart
+                                    + " or /clear shopping cart")
+                    .queue();
         } else {
-            shoppingCart.addDishToCart(dishToAdd, quantity);
-            // TODO: use string builder and display cart info from event.reply
-            shoppingCart
-                    .getCart()
-                    .forEach((key, value) -> System.out.println(key.getDishName() + ": " + value));
-
+            shoppingCart.addDishToCart(discordUserId, dishToAdd, quantity);
             event.reply(
                             quantity
                                     + " "
@@ -76,7 +91,18 @@ public class AddDishToCartCommand implements Command {
                                     + " from "
                                     + restaurant
                                     + " has been added "
-                                    + "to cart ")
+                                    + "to cart \n")
+                    //                                    +  event.getUser().getName()
+                    //                                    + ", "
+                    //                                    +
+                    // shoppingCart.displayCartInfoOfUser(discordUserId))
+                    .queue();
+
+            event.getChannel()
+                    .sendMessage(
+                            event.getUser().getName()
+                                    + ", "
+                                    + shoppingCart.displayCartInfoOfUser(discordUserId))
                     .queue();
         }
     }

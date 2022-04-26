@@ -74,4 +74,16 @@ public class CommandModule {
     public Command provideCancelCommand(CancelCommand cancelCommand) {
         return cancelCommand;
     }
+
+    @Provides
+    @IntoSet
+    public Command providePlaceOrderCommand(PlaceOrderCommand placeOrderCommand) {
+        return placeOrderCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideCheckOrderStatusCommand(CheckOrderStatusCommand checkOrderStatusCommand) {
+        return checkOrderStatusCommand;
+    }
 }

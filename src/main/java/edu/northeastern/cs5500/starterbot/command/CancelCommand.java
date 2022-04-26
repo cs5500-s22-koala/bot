@@ -22,28 +22,36 @@ public class CancelCommand implements Command {
     @Nonnull
     @Override
     public String getName() {
-        return "cancel-order";
+        return "cancel";
     }
 
     @Nonnull
     @Override
     public CommandData getCommandData() {
-        return new CommandData(getName(), "Tell the bot whether you want to cancel order")
+        return new CommandData(getName(), "Tell the bot whether you want to clear shopping cart")
                 .addOptions(
                         new OptionData(
                                         OptionType.STRING,
                                         "answer",
-                                        "The bot will cancel the order if you type 'YES'")
+                                        "The bot will clear shopping cart if you type 'YES'")
                                 .setRequired(true));
     }
 
     @Override
     public void onEvent(@Nonnull CommandInteraction event) {
-        log.info("event: /cancelOrderCommand");
+        log.info("event: /clearShoppingCart");
         String ans = event.getOption("answer").getAsString();
-        if (ans.equals("YES")) {
-            shoppingCart.clearShoppingCart();
-            event.reply("Clear shopping cart").queue();
+        String discordUserId = event.getUser().getId();
+
+        if (ans.equalsIgnoreCase("YES")) {
+            if (shoppingCart.getCartOfUser(discordUserId) == null) {
+                event.reply(event.getUser().getName() + ", Your shopping cart has nothing to clear")
+                        .queue();
+            } else {
+                shoppingCart.clearShoppingCartOfUser(discordUserId);
+                event.reply(event.getUser().getName() + ", Your shopping cart is empty now")
+                        .queue();
+            }
         }
     }
 }
