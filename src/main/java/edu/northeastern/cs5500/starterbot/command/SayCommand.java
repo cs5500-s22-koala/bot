@@ -1,5 +1,7 @@
 package edu.northeastern.cs5500.starterbot.command;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +36,9 @@ public class SayCommand implements Command {
     @Override
     public void onEvent(CommandInteraction event) {
         log.info("event: /say");
-        event.reply(event.getOption("content").getAsString()).queue();
+        LocalDateTime dt = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        event.reply(event.getOption("content").getAsString() + dateTimeFormatter.format(dt))
+                .queue();
     }
 }
