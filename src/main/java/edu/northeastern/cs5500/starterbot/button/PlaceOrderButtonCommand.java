@@ -67,6 +67,5 @@ public class PlaceOrderButtonCommand implements Command, ButtonClickHandler {
         } else {
             event.reply("invalid operation").queue();
         }
-
     }
 }
