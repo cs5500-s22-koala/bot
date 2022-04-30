@@ -12,17 +12,17 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 @Singleton
 @Slf4j
-public class CancelCommand implements Command {
+public class ClearCartCommand implements Command {
 
     ShoppingCart shoppingCart = ShoppingCart.getInstance();
 
     @Inject
-    public CancelCommand() {}
+    public ClearCartCommand() {}
 
     @Nonnull
     @Override
     public String getName() {
-        return "cancel";
+        return "clear-cart";
     }
 
     @Nonnull
@@ -33,7 +33,7 @@ public class CancelCommand implements Command {
                         new OptionData(
                                         OptionType.STRING,
                                         "answer",
-                                        "The bot will clear shopping cart if you type 'YES'")
+                                        "The bot will clear shopping cart if you type 'YES/yes/Y/y'")
                                 .setRequired(true));
     }
 
@@ -43,7 +43,7 @@ public class CancelCommand implements Command {
         String ans = event.getOption("answer").getAsString();
         String discordUserId = event.getUser().getId();
 
-        if (ans.equalsIgnoreCase("YES")) {
+        if (ans.equalsIgnoreCase("YES") || ans.equalsIgnoreCase("Y")) {
             if (shoppingCart.getCartOfUser(discordUserId) == null) {
                 event.reply(event.getUser().getName() + ", Your shopping cart has nothing to clear")
                         .queue();
@@ -52,6 +52,11 @@ public class CancelCommand implements Command {
                 event.reply(event.getUser().getName() + ", Your shopping cart is empty now")
                         .queue();
             }
+        } else {
+            event.reply(
+                            event.getUser().getName()
+                                    + ", please enter YES/yes/Y/s to clear shopping cart")
+                    .queue();
         }
     }
 }

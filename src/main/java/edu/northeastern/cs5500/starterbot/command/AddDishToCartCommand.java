@@ -92,10 +92,6 @@ public class AddDishToCartCommand implements Command {
                                     + restaurant
                                     + " has been added "
                                     + "to cart \n")
-                    //                                    +  event.getUser().getName()
-                    //                                    + ", "
-                    //                                    +
-                    // shoppingCart.displayCartInfoOfUser(discordUserId))
                     .queue();
 
             event.getChannel()
