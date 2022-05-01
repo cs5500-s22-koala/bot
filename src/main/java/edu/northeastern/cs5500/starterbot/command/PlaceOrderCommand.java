@@ -2,7 +2,6 @@ package edu.northeastern.cs5500.starterbot.command;
 
 import edu.northeastern.cs5500.starterbot.controller.OrderController;
 import edu.northeastern.cs5500.starterbot.function.ShoppingCart;
-import edu.northeastern.cs5500.starterbot.model.Dish;
 import java.util.HashMap;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -44,7 +43,7 @@ public class PlaceOrderCommand implements Command {
             int orderId = orderController.generateOrderId();
             double expense = shoppingCart.getPriceOfCartForUser(discordUserId);
             HashMap<String, Integer> itemsOrdered =
-                    getDishNameAndQuantity(shoppingCart.getCartOfUser(discordUserId));
+                    shoppingCart.getDishNameAndQuantityOfUserCart(discordUserId);
             orderController.addOrder(
                     orderId,
                     discordUserId,
@@ -63,13 +62,5 @@ public class PlaceOrderCommand implements Command {
                                     + expense)
                     .queue();
         }
-    }
-
-    public HashMap<String, Integer> getDishNameAndQuantity(HashMap<Dish, Integer> usercart) {
-        HashMap<String, Integer> res = new HashMap<>();
-        for (Dish dish : usercart.keySet()) {
-            res.put(dish.getDishName(), usercart.get(dish));
-        }
-        return res;
     }
 }

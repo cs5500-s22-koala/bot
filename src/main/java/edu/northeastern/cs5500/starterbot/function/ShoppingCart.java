@@ -73,4 +73,13 @@ public class ShoppingCart {
         }
         return cost;
     }
+
+    public HashMap<String, Integer> getDishNameAndQuantityOfUserCart(String discordUserId) {
+        HashMap<Dish, Integer> usercart = this.getCartOfUser(discordUserId);
+        HashMap<String, Integer> res = new HashMap<>();
+        for (Dish dish : usercart.keySet()) {
+            res.put(dish.getDishName(), usercart.get(dish));
+        }
+        return res;
+    }
 }

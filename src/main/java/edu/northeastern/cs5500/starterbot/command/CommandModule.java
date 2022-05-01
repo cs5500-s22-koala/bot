@@ -3,6 +3,8 @@ package edu.northeastern.cs5500.starterbot.command;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoSet;
+import edu.northeastern.cs5500.starterbot.button.ButtonClickHandler;
+import edu.northeastern.cs5500.starterbot.button.PlaceOrderButtonCommand;
 
 @Module
 public class CommandModule {
@@ -71,8 +73,8 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command provideCancelCommand(CancelCommand cancelCommand) {
-        return cancelCommand;
+    public Command provideClearCartCommand(ClearCartCommand clearCartCommand) {
+        return clearCartCommand;
     }
 
     @Provides
@@ -85,5 +87,18 @@ public class CommandModule {
     @IntoSet
     public Command provideCheckOrderStatusCommand(CheckOrderStatusCommand checkOrderStatusCommand) {
         return checkOrderStatusCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command providePlaceOrderButtonCommand(PlaceOrderButtonCommand placeOrderButtonCommand) {
+        return placeOrderButtonCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public ButtonClickHandler providePlaceOrderButtonCommandClickHandler(
+            PlaceOrderButtonCommand placeOrderButtonCommand) {
+        return placeOrderButtonCommand;
     }
 }
