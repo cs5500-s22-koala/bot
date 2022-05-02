@@ -57,7 +57,6 @@ public class ShoppingCart {
     public String displayCartInfoOfUser(String discordUserId) {
         StringBuilder sb = new StringBuilder();
         HashMap<Dish, Integer> user_cart = cart.get(discordUserId);
-        sb.append("Your shopping cart info (item: amount):\n");
         for (Dish dish : user_cart.keySet()) {
             sb.append(dish.getDishName() + ": " + user_cart.get(dish) + "\n");
         }
