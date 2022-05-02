@@ -3,8 +3,7 @@ package edu.northeastern.cs5500.starterbot.command;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoSet;
-import edu.northeastern.cs5500.starterbot.button.ButtonClickHandler;
-import edu.northeastern.cs5500.starterbot.button.PlaceOrderButtonCommand;
+import edu.northeastern.cs5500.starterbot.dropdown.GetMenuOfRestaurantCommand;
 
 @Module
 public class CommandModule {
@@ -61,12 +60,6 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command provideShowMenuCommand(ShowMenuCommand showMenuCommand) {
-        return showMenuCommand;
-    }
-
-    @Provides
-    @IntoSet
     public Command provideAddDishToCartCommand(AddDishToCartCommand addDishToCartCommand) {
         return addDishToCartCommand;
     }
@@ -91,14 +84,8 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command providePlaceOrderButtonCommand(PlaceOrderButtonCommand placeOrderButtonCommand) {
-        return placeOrderButtonCommand;
-    }
-
-    @Provides
-    @IntoSet
-    public ButtonClickHandler providePlaceOrderButtonCommandClickHandler(
-            PlaceOrderButtonCommand placeOrderButtonCommand) {
-        return placeOrderButtonCommand;
+    public Command provideGetMenuOfRestaurantCommand(
+            GetMenuOfRestaurantCommand getMenuOfRestaurantCommand) {
+        return getMenuOfRestaurantCommand;
     }
 }

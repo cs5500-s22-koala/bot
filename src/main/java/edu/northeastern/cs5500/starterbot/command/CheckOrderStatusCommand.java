@@ -44,9 +44,10 @@ public class CheckOrderStatusCommand implements Command {
         if (orderId <= 0 || orderId >= orderController.generateOrderId()) {
             event.reply("Please enter valid orderId ").queue();
         } else if (orderController.checkOrderStatus(orderId)) {
-            event.reply("Your order (orderId:" + orderId + ") has been delivered").queue();
+            event.reply("Your order (orderNumber:" + orderId + ") has been delivered").queue();
         } else {
-            event.reply("Your order (orderId:" + orderId + ") has not been delivered yet").queue();
+            event.reply("Your order (orderNumber:" + orderId + ") has not been delivered yet")
+                    .queue();
         }
     }
 }
