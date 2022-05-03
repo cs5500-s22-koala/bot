@@ -14,6 +14,7 @@ import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
+import net.dv8tion.jda.api.entities.Emoji;
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 import net.dv8tion.jda.api.events.interaction.SelectionMenuEvent;
 import net.dv8tion.jda.api.interactions.commands.CommandInteraction;
@@ -85,9 +86,18 @@ public class GetMenuOfRestaurantCommand
                         .setPlaceholder("Choose a dish to shopping cart")
                         .setRequiredRange(1, 1);
         for (Dish d : menuOfRestaurant) {
-            menu.addOption(
-                    d.getDishName() + ": $" + d.getPrice(), // label is what is shown to users
-                    d.getRestaurantName() + ":" + d.getDishName());
+            //            menu.addOption(
+            //                    d.getDishName() + ": $" + d.getPrice(), // label is what is shown
+            // to users
+            //                    d.getRestaurantName() + ":" + d.getDishName());
+            menu.addOptions(
+                    SelectOption.of(
+                                    d.getDishName()
+                                            + ": $"
+                                            + d.getPrice(), // label is what is shown to users
+                                    d.getRestaurantName() + ":" + d.getDishName())
+                            .withDescription(d.getDishDescription())
+                            .withEmoji(Emoji.fromUnicode("U+1F449")));
         }
         return menu.build();
     }
@@ -136,7 +146,7 @@ public class GetMenuOfRestaurantCommand
                                     Button.success(
                                             this.getName() + ":continue", "CONTINUE SHOPPING"),
                                     Button.secondary(this.getName() + ":cancel", "CANCEL")));
-            event.reply(messageBuilder.build()).queue();
+            event.reply(messageBuilder.build()).setEphemeral(true).queue();
         }
     }
 
