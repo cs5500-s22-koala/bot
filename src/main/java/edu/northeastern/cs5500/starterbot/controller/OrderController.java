@@ -35,7 +35,8 @@ public class OrderController {
     // TODO: add order id to restaurant list(add one more method in restaurantController)
     public void addOrderToRestaurant(int orderId, String restaurantName) {}
 
-    // TODO: get current time and compare it with order's creation time, yes means order delivered
+    // TODO: get current time and compare it with order's creation time, true means order is
+    // delivered
     // Should guaranteed that orderId is valid when passed in as parameter
     public boolean checkOrderStatus(int orderId) {
         LocalDateTime orderCreatedTime = null;
@@ -47,6 +48,7 @@ public class OrderController {
             }
         }
 
+        // Assumes delivery time is 1min, it is a made-up time, just to show we have this function
         LocalDateTime deliverTime = orderCreatedTime.plusMinutes(1);
         LocalDateTime currentTime = LocalDateTime.now();
 
