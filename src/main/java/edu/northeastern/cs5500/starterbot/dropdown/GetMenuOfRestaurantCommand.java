@@ -80,10 +80,14 @@ public class GetMenuOfRestaurantCommand
             MessageBuilder mb = new MessageBuilder().setEmbeds(eb.build());
             // event.reply(mb.build()).setEphemeral(true).addActionRow(menu).queue();
 
-            event.getChannel()
-                    .sendMessage(mb.build())
-                    .setActionRow(menu)
-                    .queue(m -> m.delete().queueAfter(60, TimeUnit.SECONDS));
+            //            event.getChannel()
+            //                    .sendMessage(mb.build())
+            //                    .setActionRow(menu)
+            //                    .queue(m -> m.delete().queueAfter(60, TimeUnit.SECONDS));
+            event.reply(mb.build())
+                    .setEphemeral(false)
+                    .addActionRow(menu)
+                    .queue(m -> m.deleteOriginal().queueAfter(30, TimeUnit.SECONDS));
         }
     }
 
@@ -173,17 +177,16 @@ public class GetMenuOfRestaurantCommand
             eb.setColor(0xea00ff);
             eb.setThumbnail("https://nhramuseum.org/wp-content/uploads/2018/12/cloud.gif");
             MessageBuilder mb = new MessageBuilder().setEmbeds(eb.build());
-            //            event.getComponent().asDisabled(); // TODO: delete in next pr
+            event.getComponent().asDisabled(); // TODO: delete in next pr
             event.reply(mb.build()).queue();
         } else if (buttonId.equals("cancel")) {
             shoppingCart.clearShoppingCartOfUser(discordUserId);
-            //            event.getInteraction().getComponent().asDisabled(); // TODO: delete in
-            // next pr
+            event.getInteraction().getComponent().asDisabled(); // TODO: delete in next pr
             event.reply(discordUserName + ", your shopping cart is empty now").queue();
         } else {
             event.reply("invalid operation").queue();
         }
-        event.editButton(null).queue();
+        //        event.editButton(null).queue();
     }
 
     public String placeOrder(String discordUserId) {
