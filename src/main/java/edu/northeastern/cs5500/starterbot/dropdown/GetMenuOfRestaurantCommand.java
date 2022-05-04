@@ -177,7 +177,8 @@ public class GetMenuOfRestaurantCommand
             event.reply(mb.build()).queue();
         } else if (buttonId.equals("cancel")) {
             shoppingCart.clearShoppingCartOfUser(discordUserId);
-            //            event.getInteraction().getComponent().asDisabled(); // TODO: delete in next pr
+            //            event.getInteraction().getComponent().asDisabled(); // TODO: delete in
+            // next pr
             event.reply(discordUserName + ", your shopping cart is empty now").queue();
         } else {
             event.reply("invalid operation").queue();
