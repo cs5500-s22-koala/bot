@@ -67,6 +67,9 @@ public class ShoppingCart {
     public Double getPriceOfCartForUser(String discordUserId) {
         Double cost = 0.0;
         HashMap<Dish, Integer> user_cart = cart.get(discordUserId);
+        if (user_cart == null) {
+            return 0.0;
+        }
         for (Dish dish : user_cart.keySet()) {
             cost += dish.getPrice() * user_cart.get(dish);
         }
