@@ -37,7 +37,7 @@ public class GetRestaurantCommand implements Command {
                         new OptionData(
                                         OptionType.STRING,
                                         "name",
-                                        "The bot will use this name to talk to you going forward")
+                                        "The bot will show you the restaurant's information")
                                 .setRequired(true));
     }
 
@@ -50,7 +50,6 @@ public class GetRestaurantCommand implements Command {
         if (result == null) {
             event.reply("No restaurant named " + restaurantName + " on the server").queue();
         } else {
-            // TODO: Come up with a better format to display restaurant info
             MessageEmbed eb =
                     new EmbedBuilder()
                             .setImage(result.getImageUrl())
@@ -58,8 +57,12 @@ public class GetRestaurantCommand implements Command {
                             .setColor(Color.GREEN)
                             .addField("Cuisine Type:", result.getCuisineType(), true)
                             .addField("Zip code:", "" + result.getZipcode(), true)
+                            .addField(
+                                    "Avg Cost/Person ($)",
+                                    String.valueOf(result.getAverageCostPerGuest()),
+                                    true)
                             .build();
-            event.getChannel().sendMessage(eb).queue();
+            event.replyEmbeds(eb).queue();
         }
     }
 }

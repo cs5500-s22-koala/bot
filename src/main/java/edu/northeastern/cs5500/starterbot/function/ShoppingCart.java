@@ -60,7 +60,7 @@ public class ShoppingCart {
         for (Dish dish : user_cart.keySet()) {
             sb.append(dish.getDishName() + ": " + user_cart.get(dish) + "\n");
         }
-        sb.append("Total price: " + getPriceOfCartForUser(discordUserId) + "\n");
+        sb.append("Total price: $" + getPriceOfCartForUser(discordUserId) + "\n");
         return sb.toString();
     }
 

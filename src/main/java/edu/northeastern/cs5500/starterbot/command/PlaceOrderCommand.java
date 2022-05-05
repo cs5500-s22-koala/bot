@@ -52,15 +52,7 @@ public class PlaceOrderCommand implements Command {
                     expense);
 
             shoppingCart.clearShoppingCartOfUser(discordUserId);
-
-            event.reply(
-                            event.getUser().getName()
-                                    + " , you've placed an order, thank you!\n"
-                                    + " Your order number is "
-                                    + orderId
-                                    + "\ntotal expense is "
-                                    + expense)
-                    .queue();
+            event.reply(String.format("%s, you've placed an order, thank you!\nYour order number is %s\ntotal expense is %s",event.getUser().getName(), orderId, expense)).queue();
         }
     }
 }
