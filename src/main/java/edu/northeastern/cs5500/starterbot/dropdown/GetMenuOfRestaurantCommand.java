@@ -78,12 +78,10 @@ public class GetMenuOfRestaurantCommand
             eb.setThumbnail(
                     "https://i.pinimg.com/originals/66/22/ab/6622ab37c6db6ac166dfec760a2f2939.gif");
             MessageBuilder mb = new MessageBuilder().setEmbeds(eb.build());
-            // event.reply(mb.build()).setEphemeral(true).addActionRow(menu).queue();
-
-            event.getChannel()
-                    .sendMessage(mb.build())
-                    .setActionRow(menu)
-                    .queue(m -> m.delete().queueAfter(60, TimeUnit.SECONDS));
+            event.reply(mb.build())
+                    .setEphemeral(false)
+                    .addActionRow(menu)
+                    .queue(m -> m.deleteOriginal().queueAfter(60, TimeUnit.SECONDS));
         }
     }
 
@@ -114,7 +112,7 @@ public class GetMenuOfRestaurantCommand
         String restaurant = option.getValue().split(":")[0];
         String discordUserId = event.getUser().getId();
 
-        Dish dishToAdd = dishController.findADish(dishName, restaurant); // do we need this?
+        Dish dishToAdd = dishController.findADish(dishName, restaurant);
         String restaurantInCart = shoppingCart.getCurrentRestaurantOfUser(discordUserId);
 
         log.info("discordUserID: " + event.getUser().getId());
@@ -173,17 +171,13 @@ public class GetMenuOfRestaurantCommand
             eb.setColor(0xea00ff);
             eb.setThumbnail("https://nhramuseum.org/wp-content/uploads/2018/12/cloud.gif");
             MessageBuilder mb = new MessageBuilder().setEmbeds(eb.build());
-            //            event.getComponent().asDisabled(); // TODO: delete in next pr
             event.reply(mb.build()).queue();
         } else if (buttonId.equals("cancel")) {
             shoppingCart.clearShoppingCartOfUser(discordUserId);
-            //            event.getInteraction().getComponent().asDisabled(); // TODO: delete in
-            // next pr
             event.reply(discordUserName + ", your shopping cart is empty now").queue();
         } else {
             event.reply("invalid operation").queue();
         }
-        event.editButton(null).queue();
     }
 
     public String placeOrder(String discordUserId) {
