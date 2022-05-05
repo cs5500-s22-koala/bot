@@ -2,6 +2,7 @@ package edu.northeastern.cs5500.starterbot.repository;
 
 import dagger.Module;
 import dagger.Provides;
+import edu.northeastern.cs5500.starterbot.model.Customer;
 import edu.northeastern.cs5500.starterbot.model.Dish;
 import edu.northeastern.cs5500.starterbot.model.Order;
 import edu.northeastern.cs5500.starterbot.model.Restaurant;
@@ -52,5 +53,16 @@ public class RepositoryModule {
     @Provides
     public Class<Order> provideOrder() {
         return Order.class;
+    }
+
+    @Provides
+    public GenericRepository<Customer> provideCustomerRepository(
+            MongoDBRepository<Customer> repository) {
+        return repository;
+    }
+
+    @Provides
+    public Class<Customer> provideCustomer() {
+        return Customer.class;
     }
 }
