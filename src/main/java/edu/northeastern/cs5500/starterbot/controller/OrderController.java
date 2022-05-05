@@ -32,12 +32,9 @@ public class OrderController {
         orderRepository.add(order);
     }
 
-    // TODO: add order id to restaurant list(add one more method in restaurantController)
-    public void addOrderToRestaurant(int orderId, String restaurantName) {}
-
-    // TODO: get current time and compare it with order's creation time, true means order is
-    // delivered
-    // Should guaranteed that orderId is valid when passed in as parameter
+    /** Get current time and compare it with order's creation time, true means order is delivered
+        orderId is valid when passed in as parameter
+     **/
     public boolean checkOrderStatus(int orderId) {
         LocalDateTime orderCreatedTime = null;
         Collection<Order> orders = orderRepository.getAll();
