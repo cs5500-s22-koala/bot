@@ -16,13 +16,28 @@ public class RestaurantController {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public void addRestaurant(String name, String cuisineType, int zipcode, String imageUrl) {
+    public void addRestaurant(
+            String name,
+            String cuisineType,
+            double averageCostPerGuest,
+            String address,
+            int zipcode,
+            String imageUrl,
+            int phone,
+            String operatingHours,
+            String introduction) {
         // TODO: better check duplication of restaurant names, only allow unique name
         Restaurant restaurant = new Restaurant();
         restaurant.setCuisineType(cuisineType);
         restaurant.setName(name);
         restaurant.setZipcode(zipcode);
         restaurant.setImageUrl(imageUrl);
+        restaurant.setAverageCostPerGuest(averageCostPerGuest);
+        restaurant.setAddress(address);
+        restaurant.setPhone(phone);
+        restaurant.setOperatingHours(operatingHours);
+        restaurant.setIntroduction(introduction);
+
         restaurantRepository.add(restaurant);
     }
     // If not found, return null

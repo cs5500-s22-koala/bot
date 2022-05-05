@@ -54,13 +54,18 @@ public class GetRestaurantCommand implements Command {
                     new EmbedBuilder()
                             .setImage(result.getImageUrl())
                             .setTitle(result.getName())
+                            .setDescription(result.getIntroduction())
+                            .setColor(Color.GREEN)
+                            .setFooter(result.getAddress())
                             .setColor(Color.GREEN)
                             .addField("Cuisine Type:", result.getCuisineType(), true)
-                            .addField("Zip code:", "" + result.getZipcode(), true)
                             .addField(
                                     "Avg Cost/Person ($)",
                                     String.valueOf(result.getAverageCostPerGuest()),
                                     true)
+                            .addField("Operating Hours: ", result.getOperatingHours(), true)
+                            .addField("Phone: ", "" + result.getPhone(), true)
+                            .addField("Zip code:", "" + result.getZipcode(), true)
                             .build();
             event.replyEmbeds(eb).queue();
         }
