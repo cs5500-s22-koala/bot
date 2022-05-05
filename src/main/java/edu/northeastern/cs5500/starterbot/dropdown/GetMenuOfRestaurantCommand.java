@@ -121,7 +121,9 @@ public class GetMenuOfRestaurantCommand
 
         if (restaurantInCart != null && !restaurant.equals(restaurantInCart)) {
             log.info("restaurant in cart and current selected restaurant are not the same");
-            event.reply("Please enter dish from restaurant %s or use command /clear-cart to clear shopping cart").queue();
+            event.reply(
+                            "Please enter dish from restaurant %s or use command /clear-cart to clear shopping cart")
+                    .queue();
             return;
         } else {
             log.info("onSelectionMenu: add dish to cart");
@@ -131,7 +133,10 @@ public class GetMenuOfRestaurantCommand
                             "%s\n:heartpulse:You can either place an order(CONFIRM) or clear shopping cart(CANCEL)",
                             shoppingCart.displayCartInfoOfUser(discordUserId));
             EmbedBuilder eb = new EmbedBuilder();
-            eb.setTitle(String.format("%s, here is your cart info(item: quantity):", event.getUser().getName()));
+            eb.setTitle(
+                    String.format(
+                            "%s, here is your cart info(item: quantity):",
+                            event.getUser().getName()));
             eb.setDescription(description);
             eb.setColor(0x00eaff);
             MessageBuilder messageBuilder = new MessageBuilder();
@@ -156,11 +161,16 @@ public class GetMenuOfRestaurantCommand
         if (buttonId.equals("confirm")) {
             String placeOrderMsg = placeOrder(discordUserId);
             if (placeOrderMsg.equals("")) {
-                event.reply(String.format("%s, you don't have anything in your cart to place an order", discordUserName))
+                event.reply(
+                                String.format(
+                                        "%s, you don't have anything in your cart to place an order",
+                                        discordUserName))
                         .queue();
             }
             EmbedBuilder eb = new EmbedBuilder();
-            eb.setTitle(String.format("%s, you've placed an order, thank you!:", event.getUser().getName()));
+            eb.setTitle(
+                    String.format(
+                            "%s, you've placed an order, thank you!:", event.getUser().getName()));
             eb.setDescription(placeOrderMsg);
             eb.setColor(0xea00ff);
             eb.setThumbnail("https://nhramuseum.org/wp-content/uploads/2018/12/cloud.gif");
@@ -168,7 +178,8 @@ public class GetMenuOfRestaurantCommand
             event.reply(mb.build()).queue();
         } else if (buttonId.equals("cancel")) {
             shoppingCart.clearShoppingCartOfUser(discordUserId);
-            event.reply(String.format("%s, your shopping cart is empty now", discordUserName)).queue();
+            event.reply(String.format("%s, your shopping cart is empty now", discordUserName))
+                    .queue();
         } else {
             event.reply("invalid operation").queue();
         }

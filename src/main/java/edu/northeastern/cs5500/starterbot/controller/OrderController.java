@@ -32,9 +32,10 @@ public class OrderController {
         orderRepository.add(order);
     }
 
-    /** Get current time and compare it with order's creation time, true means order is delivered
-        orderId is valid when passed in as parameter
-     **/
+    /**
+     * Get current time and compare it with order's creation time, true means order is delivered
+     * orderId is valid when passed in as parameter
+     */
     public boolean checkOrderStatus(int orderId) {
         LocalDateTime orderCreatedTime = null;
         Collection<Order> orders = orderRepository.getAll();

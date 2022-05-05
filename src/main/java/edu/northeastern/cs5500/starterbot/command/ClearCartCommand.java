@@ -45,15 +45,24 @@ public class ClearCartCommand implements Command {
 
         if (ans.equalsIgnoreCase("YES") || ans.equalsIgnoreCase("Y")) {
             if (shoppingCart.getCartOfUser(discordUserId) == null) {
-                event.reply(String.format("%s, Your shopping cart has nothing to clear", event.getUser().getName()))
+                event.reply(
+                                String.format(
+                                        "%s, Your shopping cart has nothing to clear",
+                                        event.getUser().getName()))
                         .queue();
             } else {
                 shoppingCart.clearShoppingCartOfUser(discordUserId);
-                event.reply(String.format("%s, Your shopping cart is empty now", event.getUser().getName()))
+                event.reply(
+                                String.format(
+                                        "%s, Your shopping cart is empty now",
+                                        event.getUser().getName()))
                         .queue();
             }
         } else {
-            event.reply(String.format("%s, please enter YES/yes/Y/s to clear shopping cart", event.getUser().getName()))
+            event.reply(
+                            String.format(
+                                    "%s, please enter YES/yes/Y/s to clear shopping cart",
+                                    event.getUser().getName()))
                     .queue();
         }
     }

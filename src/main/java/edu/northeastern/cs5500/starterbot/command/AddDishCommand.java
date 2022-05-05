@@ -67,7 +67,11 @@ public class AddDishCommand implements Command {
             event.reply("Please enter valid dish info ").queue();
         } else {
             dishController.addDish(dishId, dishName, price, restaurant);
-            event.reply(String.format("Dish %s has been inserted into %s's menu", dishName, restaurant)).queue();
+            event.reply(
+                            String.format(
+                                    "Dish %s has been inserted into %s's menu",
+                                    dishName, restaurant))
+                    .queue();
         }
     }
 }

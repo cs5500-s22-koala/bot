@@ -71,10 +71,22 @@ public class AddDishToCartCommand implements Command {
             event.reply("Please enter valid dish or restaurant name ").queue();
         } else if (restaurantInCart != null && !restaurant.equals(restaurantInCart)) {
             log.info("two restaurants are not the same");
-            event.reply(String.format("Please enter dish from restaurant %s or clear shopping cart", restaurantInCart)).queue();
+            event.reply(
+                            String.format(
+                                    "Please enter dish from restaurant %s or clear shopping cart",
+                                    restaurantInCart))
+                    .queue();
         } else {
             shoppingCart.addDishToCart(discordUserId, dishToAdd, quantity);
-            event.reply(String.format("%s %s from %s has been added to cart \n%s, %s", quantity, dishName, restaurant, event.getUser().getName(), shoppingCart.displayCartInfoOfUser(discordUserId))).queue();
+            event.reply(
+                            String.format(
+                                    "%s %s from %s has been added to cart \n%s, %s",
+                                    quantity,
+                                    dishName,
+                                    restaurant,
+                                    event.getUser().getName(),
+                                    shoppingCart.displayCartInfoOfUser(discordUserId)))
+                    .queue();
         }
     }
 }
