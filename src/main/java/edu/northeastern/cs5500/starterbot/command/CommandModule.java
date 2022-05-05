@@ -3,6 +3,7 @@ package edu.northeastern.cs5500.starterbot.command;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoSet;
+import edu.northeastern.cs5500.starterbot.dropdown.GetMenuOfRestaurantCommand;
 
 @Module
 public class CommandModule {
@@ -39,14 +40,22 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command provideAddDishCommand(AddDishCommand addDishCommand) {
-        return addDishCommand;
+    public Command provideGetRestaurantOnZipcodeCommand(
+            GetRestaurantOnZipcodeCommand getRestaurantOnZipcodeCommand) {
+        return getRestaurantOnZipcodeCommand;
     }
 
     @Provides
     @IntoSet
-    public Command provideShowMenuCommand(ShowMenuCommand showMenuCommand) {
-        return showMenuCommand;
+    public Command provideGetRestaurantOnZipcodeCuisineTypeCommand(
+            GetRestaurantOnZipcodeCuisineTypeCommand getRestaurantOnZipcodeCuisineTypeCommand) {
+        return getRestaurantOnZipcodeCuisineTypeCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideAddDishCommand(AddDishCommand addDishCommand) {
+        return addDishCommand;
     }
 
     @Provides
@@ -57,7 +66,26 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command provideCancelCommand(CancelCommand cancelCommand) {
-        return cancelCommand;
+    public Command provideClearCartCommand(ClearCartCommand clearCartCommand) {
+        return clearCartCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command providePlaceOrderCommand(PlaceOrderCommand placeOrderCommand) {
+        return placeOrderCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideCheckOrderStatusCommand(CheckOrderStatusCommand checkOrderStatusCommand) {
+        return checkOrderStatusCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideGetMenuOfRestaurantCommand(
+            GetMenuOfRestaurantCommand getMenuOfRestaurantCommand) {
+        return getMenuOfRestaurantCommand;
     }
 }

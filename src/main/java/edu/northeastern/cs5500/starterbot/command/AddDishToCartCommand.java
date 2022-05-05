@@ -58,25 +58,34 @@ public class AddDishToCartCommand implements Command {
         int quantity = (int) event.getOption("quantity").getAsLong();
         String dishName = event.getOption("dishname").getAsString();
         String restaurant = event.getOption("restaurantname").getAsString();
+        String discordUserId = event.getUser().getId();
 
         Dish dishToAdd = dishController.findADish(dishName, restaurant);
+        String restaurantInCart = shoppingCart.getCurrentRestaurantOfUser(discordUserId);
+
+        log.info("discordUserID: " + event.getUser().getId());
+        log.info("current restaurant " + restaurant);
+        log.info("shopping cart restaurant " + restaurantInCart);
+
         if (dishToAdd == null) {
             event.reply("Please enter valid dish or restaurant name ").queue();
-        } else {
-            shoppingCart.addDishToCart(dishToAdd, quantity);
-            // TODO: use string builder and display cart info from event.reply
-            shoppingCart
-                    .getCart()
-                    .forEach((key, value) -> System.out.println(key.getDishName() + ": " + value));
-
+        } else if (restaurantInCart != null && !restaurant.equals(restaurantInCart)) {
+            log.info("two restaurants are not the same");
             event.reply(
-                            quantity
-                                    + " "
-                                    + dishName
-                                    + " from "
-                                    + restaurant
-                                    + " has been added "
-                                    + "to cart ")
+                            String.format(
+                                    "Please enter dish from restaurant %s or clear shopping cart",
+                                    restaurantInCart))
+                    .queue();
+        } else {
+            shoppingCart.addDishToCart(discordUserId, dishToAdd, quantity);
+            event.reply(
+                            String.format(
+                                    "%s %s from %s has been added to cart \n%s, %s",
+                                    quantity,
+                                    dishName,
+                                    restaurant,
+                                    event.getUser().getName(),
+                                    shoppingCart.displayCartInfoOfUser(discordUserId)))
                     .queue();
         }
     }

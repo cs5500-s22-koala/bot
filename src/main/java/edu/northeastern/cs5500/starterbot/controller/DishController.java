@@ -22,6 +22,7 @@ public class DishController {
         dish.setDishName(dishName);
         dish.setPrice(price);
         dish.setRestaurantName(restaurantName);
+        dish.setDishDescription("");
         dishRepository.add(dish);
     }
 

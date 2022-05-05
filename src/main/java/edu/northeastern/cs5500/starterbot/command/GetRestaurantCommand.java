@@ -57,6 +57,7 @@ public class GetRestaurantCommand implements Command {
                             .setDescription(result.getIntroduction())
                             .setColor(Color.GREEN)
                             .setFooter(result.getAddress())
+                            .setColor(Color.GREEN)
                             .addField("Cuisine Type:", result.getCuisineType(), true)
                             .addField(
                                     "Avg Cost/Person ($)",

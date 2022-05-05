@@ -61,6 +61,16 @@ dependencies {
     // MongoDB for data storage
     implementation 'org.mongodb:mongo-java-driver:_'
 
+    // Apache HTTPClient for getting remote data
+    implementation 'org.apache.httpcomponents:httpclient:_'
+
+    // Jackson for processing JSON data
+    // If I see you add this to your build.gradle and not use Jackson
+    // ...I will have questions for your team
+    // ...and I better not find that you copied this line. :)
+    implementation 'com.fasterxml.jackson.core:jackson-core:_'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:_'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:_'
 }
 
 application {
@@ -77,6 +87,11 @@ test {
 
     // Create a Jacoco report after each test run
     finalizedBy jacocoTestReport
+
+    jacoco {
+        excludes += ['**.Bot', '**.App', '**.PreferredNameCommand', '**.CommandModule',
+                     '**.listener.**', '**.RepositoryModule', '**.DaggerBotComponent.**']
+    }
 }
 
 // Generate an XML report that the coverage extension can use
@@ -84,15 +99,71 @@ jacocoTestReport {
     dependsOn test
     reports {
         xml.enabled true
-        // Change html.enabled to true if you want html reports
-        html.enabled false
+        // Set html.enabled to true if you want html reports
+        html.enabled true
         csv.enabled false
         xml.destination file("${buildDir}/reports/jacoco.xml")
+
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: [
+                            '**/Bot.class',
+                            '**/App.class',
+                            '**/PreferredNameCommand.class',
+                            '**/*Module.class',
+                            '**/listener/**',
+                            '**/DaggerBotComponent*',
+                            '**/*_Factory*',
+                            '**/MongoDBRepository.class',
+                            '**/MongoDBService.class',
+                            '**/*Exception.class'
+                    ])
+        }))
     }
 }
 
 // Check coverage after each test run
 check.dependsOn jacocoTestCoverageVerification
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            excludes = [
+                    '**.Bot',
+                    '**.App',
+                    '**.PreferredNameCommand',
+                    '**.*Module',
+                    '**.listener.**',
+                    '**.DaggerBotComponent.**',
+                    '**.*_Factory.**',
+                    'edu.northeastern.cs5500.starterbot.repository.MongoDBRepository',
+                    'edu.northeastern.cs5500.starterbot.service.MongoDBService',
+                    '**.*Exception'
+            ]
+
+            limit {
+                counter = 'LINE'
+                minimum = 0
+            }
+
+            limit {
+                counter = 'BRANCH'
+                minimum = 0
+            }
+        }
+        rule {
+            limit {
+                counter = 'CLASS'
+                excludes = ['**.Bot', '**.App', '**.PreferredNameCommand', '**.CommandModule',
+                            '**.listener.**', '**.RepositoryModule', '**.DaggerBotComponent.**']
+                minimum = 0
+            }
+        }
+    }
+}
 
 // Target Java 11 - make sure system.properties matches this as well
 sourceCompatibility = 1.11
