@@ -73,7 +73,7 @@ public class GetMenuOfRestaurantCommand
             eb.setTitle("Please pick your dish from " + restaurant + "'s menu");
             eb.setDescription(
                     "You can add multiple dishes, but one at a time \nNote: you only have"
-                            + " 1 minute to edit shopping cart");
+                            + " 1 minute to edit shopping cart:hourglass:");
             eb.setColor(0xffcc00);
             eb.setThumbnail(
                     "https://i.pinimg.com/originals/66/22/ab/6622ab37c6db6ac166dfec760a2f2939.gif");
@@ -122,20 +122,21 @@ public class GetMenuOfRestaurantCommand
         if (restaurantInCart != null && !restaurant.equals(restaurantInCart)) {
             log.info("restaurant in cart and current selected restaurant are not the same");
             event.reply(
-                            "Please enter dish from restaurant "
-                                    + restaurantInCart
-                                    + " or /clear shopping cart")
+                            "Please enter dish from restaurant %s or use command /clear-cart to clear shopping cart")
                     .queue();
             return;
         } else {
             log.info("onSelectionMenu: add dish to cart");
             shoppingCart.addDishToCart(discordUserId, dishToAdd, quantity);
             String description =
-                    shoppingCart.displayCartInfoOfUser(discordUserId)
-                            + "\nYou can place "
-                            + "an order(CONFIRM), select more dish(CONTINUE) or clear shopping cart(CANCEL)";
+                    String.format(
+                            "%s\n:heartpulse:You can either place an order(CONFIRM) or clear shopping cart(CANCEL)",
+                            shoppingCart.displayCartInfoOfUser(discordUserId));
             EmbedBuilder eb = new EmbedBuilder();
-            eb.setTitle(event.getUser().getName() + ", here is your cart info(item: amount):");
+            eb.setTitle(
+                    String.format(
+                            "%s, here is your cart info(item: quantity):",
+                            event.getUser().getName()));
             eb.setDescription(description);
             eb.setColor(0x00eaff);
             MessageBuilder messageBuilder = new MessageBuilder();
@@ -161,12 +162,15 @@ public class GetMenuOfRestaurantCommand
             String placeOrderMsg = placeOrder(discordUserId);
             if (placeOrderMsg.equals("")) {
                 event.reply(
-                                discordUserName
-                                        + ", you don't have anything in your cart to place an order")
+                                String.format(
+                                        "%s, you don't have anything in your cart to place an order",
+                                        discordUserName))
                         .queue();
             }
             EmbedBuilder eb = new EmbedBuilder();
-            eb.setTitle(event.getUser().getName() + ", you've placed an order, thank you!:");
+            eb.setTitle(
+                    String.format(
+                            "%s, you've placed an order, thank you!:", event.getUser().getName()));
             eb.setDescription(placeOrderMsg);
             eb.setColor(0xea00ff);
             eb.setThumbnail("https://nhramuseum.org/wp-content/uploads/2018/12/cloud.gif");
@@ -174,7 +178,8 @@ public class GetMenuOfRestaurantCommand
             event.reply(mb.build()).queue();
         } else if (buttonId.equals("cancel")) {
             shoppingCart.clearShoppingCartOfUser(discordUserId);
-            event.reply(discordUserName + ", your shopping cart is empty now").queue();
+            event.reply(String.format("%s, your shopping cart is empty now", discordUserName))
+                    .queue();
         } else {
             event.reply("invalid operation").queue();
         }
@@ -196,7 +201,6 @@ public class GetMenuOfRestaurantCommand
                 expense);
 
         shoppingCart.clearShoppingCartOfUser(discordUserId);
-        String message = "Order number: " + orderId + "\nTotal expense: $" + expense;
-        return message;
+        return String.format("Order number: %s\nTotal expense: $%s", orderId, expense);
     }
 }

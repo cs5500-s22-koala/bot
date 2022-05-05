@@ -58,18 +58,19 @@ public class GetRestaurantOnZipcodeCuisineTypeCommand implements Command {
             event.reply("No restaurant  found in zipcode " + zipcode + " matched " + cuisinType)
                     .queue();
         } else {
-            // TODO: Come up with a better format to display restaurant info
             StringBuilder sb = new StringBuilder();
+            String bulletSymbol = ":small_orange_diamond:";
             for (Restaurant restaurant : result) {
                 sb.append(
-                        restaurant.getName()
-                                + " "
+                        bulletSymbol
+                                + restaurant.getName()
+                                + ", "
                                 + restaurant.getCuisineType()
-                                + " "
+                                + ", "
                                 + restaurant.getZipcode()
                                 + "\n");
             }
-            event.getChannel().sendMessage(sb.toString()).queue();
+            event.reply(sb.toString()).queue();
         }
     }
 }
