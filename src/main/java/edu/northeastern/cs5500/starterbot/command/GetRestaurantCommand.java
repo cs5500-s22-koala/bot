@@ -2,10 +2,13 @@ package edu.northeastern.cs5500.starterbot.command;
 
 import edu.northeastern.cs5500.starterbot.controller.RestaurantController;
 import edu.northeastern.cs5500.starterbot.model.Restaurant;
+import java.awt.Color;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.interactions.commands.CommandInteraction;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
@@ -34,7 +37,7 @@ public class GetRestaurantCommand implements Command {
                         new OptionData(
                                         OptionType.STRING,
                                         "name",
-                                        "The bot will use this name to talk to you going forward")
+                                        "The bot will show you the restaurant's information")
                                 .setRequired(true));
     }
 
@@ -47,8 +50,23 @@ public class GetRestaurantCommand implements Command {
         if (result == null) {
             event.reply("No restaurant named " + restaurantName + " on the server").queue();
         } else {
-            // TODO: Come up with a better format to display restaurant info
-            event.reply(result.toString()).queue();
+            MessageEmbed eb =
+                    new EmbedBuilder()
+                            .setImage(result.getImageUrl())
+                            .setTitle(result.getName())
+                            .setDescription(result.getIntroduction())
+                            .setColor(Color.GREEN)
+                            .setFooter(result.getAddress())
+                            .addField("Cuisine Type:", result.getCuisineType(), true)
+                            .addField(
+                                    "Avg Cost/Person ($)",
+                                    String.valueOf(result.getAverageCostPerGuest()),
+                                    true)
+                            .addField("Operating Hours: ", result.getOperatingHours(), true)
+                            .addField("Phone: ", "" + result.getPhone(), true)
+                            .addField("Zip code:", "" + result.getZipcode(), true)
+                            .build();
+            event.replyEmbeds(eb).queue();
         }
     }
 }
