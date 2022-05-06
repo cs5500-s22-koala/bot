@@ -52,20 +52,20 @@ public class GetRestaurantOnZipcodeCommand implements Command {
             String bulletSymbol = ":small_blue_diamond:";
             sb.append(
                     bulletSymbol
-                            + String.format("$20s", "Restaurant Name")
-                            + String.format("$15s", "Cuisine Type")
-                            + String.format("$10s", "Zip Code")
-                            + String.format("$20s", "Operating Hours")
-                            + String.format("$20s", "Aver.Cost Per Guest")
+                            + String.format("%20s", "Restaurant Name")
+                            + String.format("%15s", "Cuisine Type")
+                            + String.format("%10s", "Zip Code")
+                            + String.format("%20s", "Operating Hours")
+                            + String.format("%20s", "Aver.Cost Per Guest")
                             + "\n");
             for (Restaurant restaurant : result) {
                 sb.append(
                         bulletSymbol
-                                + String.format("$10s", restaurant.getName())
-                                + String.format("$15s", restaurant.getCuisineType())
-                                + String.format("$10s", restaurant.getZipcode())
-                                + String.format("$20s", restaurant.getOperatingHours())
-                                + String.format("$20s", restaurant.getAverageCostPerGuest())
+                                + String.format("%20s", restaurant.getName())
+                                + String.format("%15s", restaurant.getCuisineType())
+                                + String.format("%10s", restaurant.getZipcode())
+                                + String.format("%20s", restaurant.getOperatingHours())
+                                + String.format("%20s", restaurant.getAverageCostPerGuest())
                                 + "\n");
             }
             event.reply(sb.toString()).queue();
