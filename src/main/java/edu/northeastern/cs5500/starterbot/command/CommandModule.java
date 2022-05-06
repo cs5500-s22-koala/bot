@@ -28,12 +28,6 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command provideShowCustomerCommand(ShowCustomerCommand showCustomerCommand) {
-        return showCustomerCommand;
-    }
-
-    @Provides
-    @IntoSet
     public Command provideGetRestaurantCommand(GetRestaurantCommand getRestaurantCommand) {
         return getRestaurantCommand;
     }
@@ -87,5 +81,18 @@ public class CommandModule {
     public Command provideGetMenuOfRestaurantCommand(
             GetMenuOfRestaurantCommand getMenuOfRestaurantCommand) {
         return getMenuOfRestaurantCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideAddCustomerCommand(AddCustomerCommand addCustomerCommand) {
+        return addCustomerCommand;
+    }
+
+    @Provides
+    @IntoSet
+    public Command provideGetCustomerOnNameCommand(
+            GetCustomerOnNameCommand getCustomerOnNameCommand) {
+        return getCustomerOnNameCommand;
     }
 }
