@@ -49,24 +49,26 @@ public class GetRestaurantOnZipcodeCommand implements Command {
             event.reply("No restaurant  found in zipcode " + zipcode).queue();
         } else {
             StringBuilder sb = new StringBuilder();
-            String bulletSymbol = ":small_white_diamond:";
+            String bulletSymbol = ":small_blue_diamond:";
             sb.append(
                     bulletSymbol
-                            + String.format("%-40s", "Restaurant Name")
-                            + String.format("%-20s", "Cuisine Type")
-                            + String.format("%-15s", "Zip Code")
-                            + String.format("%-40s", "Operating Hours")
-                            + String.format("%-40s", "Aver.Cost Per Guest")
-                            + "\n");
+                            + String.format(
+                                    "%$1-30s  %$2-20s  %$3-15s  %$4-30s  %5-20s\n",
+                                    "Restaurant Name",
+                                    "Cuisine Type",
+                                    "Zip Code",
+                                    "Operating Hours",
+                                    "Aver.Cost Per Guest"));
             for (Restaurant restaurant : result) {
                 sb.append(
                         bulletSymbol
-                                + String.format("%-40s", restaurant.getName())
-                                + String.format("%-20s", restaurant.getCuisineType())
-                                + String.format("%-15s", restaurant.getZipcode())
-                                + String.format("%-40s", restaurant.getOperatingHours())
-                                + String.format("%-40s", restaurant.getAverageCostPerGuest())
-                                + "\n");
+                                + String.format(
+                                        "%$1-30s  %$2-20s  %$3-15s  %$4-30s  %5-20s\n",
+                                        restaurant.getName(),
+                                        restaurant.getCuisineType(),
+                                        restaurant.getZipcode(),
+                                        restaurant.getOperatingHours(),
+                                        restaurant.getAverageCostPerGuest()));
             }
             event.reply(sb.toString()).queue();
         }
