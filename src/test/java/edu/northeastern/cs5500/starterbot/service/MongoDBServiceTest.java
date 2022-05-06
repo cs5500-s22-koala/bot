@@ -16,15 +16,4 @@ class MongoDBServiceTest {
         assertThat(URL).isNotNull();
     }
 
-    @Test
-    void getMongoDatabase() {
-        MongoDBService mongoDBService = new MongoDBService();
-
-        GenericRepository<Restaurant> repository1 =
-                new MongoDBRepository<Restaurant>(Restaurant.class, mongoDBService);
-        Restaurant restaurant = new Restaurant();
-        restaurant.setName("TestTest");
-        repository1.add(restaurant);
-        assertThat(repository1).isNotNull();
-    }
 }
