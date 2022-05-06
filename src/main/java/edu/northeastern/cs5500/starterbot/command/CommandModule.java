@@ -10,18 +10,6 @@ public class CommandModule {
 
     @Provides
     @IntoSet
-    public Command provideSayCommand(SayCommand sayCommand) {
-        return sayCommand;
-    }
-
-    @Provides
-    @IntoSet
-    public Command providePreferredNameCommand(PreferredNameCommand preferredNameCommand) {
-        return preferredNameCommand;
-    }
-
-    @Provides
-    @IntoSet
     public Command provideAddRestaurantCommand(AddRestaurantCommand addRestaurantCommand) {
         return addRestaurantCommand;
     }
