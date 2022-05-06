@@ -14,13 +14,15 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    public void addCustomer(String customerName, String phone, String address, String bankAccount) {
+    public Customer addCustomer(
+            String customerName, String phone, String address, String bankAccount) {
         Customer customer = new Customer();
         customer.setCustomerName(customerName);
         customer.setPhone(phone);
         customer.setAddress(address);
         customer.setBankAccount(bankAccount);
         customerRepository.add(customer);
+        return customer;
     }
     // If not found, return null
     public Customer getSpecificCustomerBasedOnName(String customerName) {

@@ -53,7 +53,16 @@ public class RestaurantController {
         return result;
     }
     // If updated return true
-    public boolean updateRestaurant(String name, String cuisineType, int zipcode, String imageUrl) {
+    public boolean updateRestaurant(
+            String name,
+            String cuisineType,
+            double averageCostPerGuest,
+            String address,
+            int zipcode,
+            String imageUrl,
+            int phone,
+            String operatingHours,
+            String introduction) {
         boolean foundFlag = false;
         Collection<Restaurant> restaurants = restaurantRepository.getAll();
         for (Restaurant restaurant : restaurants) {
@@ -61,6 +70,10 @@ public class RestaurantController {
                 restaurant.setCuisineType(cuisineType);
                 restaurant.setImageUrl(imageUrl);
                 restaurant.setZipcode(zipcode);
+                restaurant.setIntroduction(introduction);
+                restaurant.setPhone(phone);
+                restaurant.setAddress(address);
+                restaurant.setOperatingHours(operatingHours);
                 foundFlag = true;
                 break;
             }
