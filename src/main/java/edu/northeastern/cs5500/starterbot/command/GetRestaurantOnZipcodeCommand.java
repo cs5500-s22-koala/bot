@@ -52,23 +52,21 @@ public class GetRestaurantOnZipcodeCommand implements Command {
             String bulletSymbol = ":small_blue_diamond:";
             sb.append(
                     bulletSymbol
-                            + String.format(
-                                    "%$1-30s  %$2-20s  %$3-15s  %$4-30s  %5-20s\n",
-                                    "Restaurant Name",
-                                    "Cuisine Type",
-                                    "Zip Code",
-                                    "Operating Hours",
-                                    "Aver.Cost Per Guest"));
+                            + String.format("%s,", "Restaurant Name")
+                            + String.format("%s,", "Cuisine Type")
+                            + String.format("%s,", "Zip Code")
+                            + String.format("%s,", "Operating Hours")
+                            + String.format("%s", "Aver.Cost Per Guest")
+                            + "\n");
             for (Restaurant restaurant : result) {
                 sb.append(
                         bulletSymbol
-                                + String.format(
-                                        "%$1-30s  %$2-20s  %$3-15s  %$4-30s  %5-20s\n",
-                                        restaurant.getName(),
-                                        restaurant.getCuisineType(),
-                                        restaurant.getZipcode(),
-                                        restaurant.getOperatingHours(),
-                                        restaurant.getAverageCostPerGuest()));
+                                + String.format("%s,", restaurant.getName())
+                                + String.format("%s,", restaurant.getCuisineType())
+                                + String.format("%s,", restaurant.getZipcode())
+                                + String.format("%s,", restaurant.getOperatingHours())
+                                + String.format("%s", restaurant.getAverageCostPerGuest())
+                                + "\n");
             }
             event.reply(sb.toString()).queue();
         }
