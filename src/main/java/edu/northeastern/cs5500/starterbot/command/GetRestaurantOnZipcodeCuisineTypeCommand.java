@@ -59,23 +59,23 @@ public class GetRestaurantOnZipcodeCuisineTypeCommand implements Command {
                     .queue();
         } else {
             StringBuilder sb = new StringBuilder();
-            String bulletSymbol = ":small_blue_diamond:";
+            String bulletSymbol = ":small_white_diamond:";
             sb.append(
                     bulletSymbol
-                            + String.format("%-70s", "Restaurant Name")
-                            + String.format("%-70s", "Cuisine Type")
-                            + String.format("%-70s", "Zip Code")
-                            + String.format("%-70s", "Operating Hours")
-                            + String.format("%-70s", "Aver.Cost Per Guest")
+                            + String.format("%-40s", "Restaurant Name")
+                            + String.format("%-20s", "Cuisine Type")
+                            + String.format("%-15s", "Zip Code")
+                            + String.format("%-40s", "Operating Hours")
+                            + String.format("%-40s", "Aver.Cost Per Guest")
                             + "\n");
             for (Restaurant restaurant : result) {
                 sb.append(
                         bulletSymbol
-                                + String.format("%-70s", restaurant.getName())
-                                + String.format("%-70s", restaurant.getCuisineType())
-                                + String.format("%-70s", restaurant.getZipcode())
-                                + String.format("%-70s", restaurant.getOperatingHours())
-                                + String.format("%-70s", restaurant.getAverageCostPerGuest())
+                                + String.format("%-40s", restaurant.getName())
+                                + String.format("%-20s", restaurant.getCuisineType())
+                                + String.format("%-15s", restaurant.getZipcode())
+                                + String.format("%-40s", restaurant.getOperatingHours())
+                                + String.format("%-40s", restaurant.getAverageCostPerGuest())
                                 + "\n");
             }
             event.reply(sb.toString()).queue();
