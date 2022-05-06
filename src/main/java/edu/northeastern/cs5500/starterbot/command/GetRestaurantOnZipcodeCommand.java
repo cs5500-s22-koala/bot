@@ -52,20 +52,20 @@ public class GetRestaurantOnZipcodeCommand implements Command {
             String bulletSymbol = ":small_blue_diamond:";
             sb.append(
                     bulletSymbol
-                            + String.format("%-40s", "Restaurant Name")
-                            + String.format("%-30s", "Cuisine Type")
-                            + String.format("%-20s", "Zip Code")
-                            + String.format("%-40s", "Operating Hours")
-                            + String.format("%-40s", "Aver.Cost Per Guest")
+                            + String.format("%-70s", "Restaurant Name")
+                            + String.format("%-70s", "Cuisine Type")
+                            + String.format("%-70s", "Zip Code")
+                            + String.format("%-70s", "Operating Hours")
+                            + String.format("%-70s", "Aver.Cost Per Guest")
                             + "\n");
             for (Restaurant restaurant : result) {
                 sb.append(
                         bulletSymbol
-                                + String.format("%-40s", restaurant.getName())
-                                + String.format("%-30s", restaurant.getCuisineType())
-                                + String.format("%-20s", restaurant.getZipcode())
-                                + String.format("%-40s", restaurant.getOperatingHours())
-                                + String.format("%-40s", restaurant.getAverageCostPerGuest())
+                                + String.format("%-70s", restaurant.getName())
+                                + String.format("%-70s", restaurant.getCuisineType())
+                                + String.format("%-70s", restaurant.getZipcode())
+                                + String.format("%-70s", restaurant.getOperatingHours())
+                                + String.format("%-70s", restaurant.getAverageCostPerGuest())
                                 + "\n");
             }
             event.reply(sb.toString()).queue();
