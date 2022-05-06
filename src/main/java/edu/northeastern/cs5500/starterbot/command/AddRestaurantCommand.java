@@ -119,7 +119,7 @@ public class AddRestaurantCommand implements Command {
                     phone,
                     operatingHours,
                     introduction);
-            event.reply("Data " + restaurantName + " inserted successfully ").queue();
+            event.reply(String.format("Data %s inserted successfully!", restaurantName)).queue();
         }
     }
 }

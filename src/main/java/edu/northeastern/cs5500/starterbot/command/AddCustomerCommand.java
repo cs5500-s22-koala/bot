@@ -67,7 +67,7 @@ public class AddCustomerCommand implements Command {
             event.reply("Please enter completed restaurant info ").queue();
         } else {
             customerController.addCustomer(customerName, phone, address, bankaccount);
-            event.reply("Data " + customerName + " inserted successfully ").queue();
+            event.reply(String.format("Data %s inserted successfully!", customerName)).queue();
         }
     }
 }
