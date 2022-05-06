@@ -51,17 +51,17 @@ public class GetCustomerOnNameCommand implements Command {
             String bulletSymbol = ":small_blue_diamond:";
             sb.append(
                     bulletSymbol
-                            + String.format("$20s", "Customer Name")
-                            + String.format("$15s", "Phone")
-                            + String.format("$30s", "Address")
-                            + String.format("$20s", "Bank Account")
+                            + String.format("%s,", "Customer Name")
+                            + String.format("%s,", "Phone")
+                            + String.format("%s,", "Address")
+                            + String.format("%s", "Bank Account")
                             + "\n");
             sb.append(
                     bulletSymbol
-                            + String.format("$20s", result.getCustomerName())
-                            + String.format("$15s", result.getPhone())
-                            + String.format("$30s", result.getAddress())
-                            + String.format("$20s", result.getBankAccount())
+                            + String.format("%s,", result.getCustomerName())
+                            + String.format("%s,", result.getPhone())
+                            + String.format("%s,", result.getAddress())
+                            + String.format("%s", result.getBankAccount())
                             + "\n");
             event.reply(sb.toString()).queue();
         }
