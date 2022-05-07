@@ -6,9 +6,5 @@ https://discord.gg/NTWnxJtQ
 ### Code repository:
 https://github.com/cs5500-s22-koala/bot
 ### Documents
-#### 1. 
-#### 2. 
-
-
-
-
+#### 1.
+#### 2.
