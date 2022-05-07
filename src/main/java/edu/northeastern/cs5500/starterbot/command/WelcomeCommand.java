@@ -33,7 +33,6 @@ public class WelcomeCommand implements Command {
     @Override
     public void onEvent(@NotNull CommandInteraction event) {
         log.info("event: /welcome");
-        //        event.reply(event.getOption("content").getAsString()).queue();
         MessageEmbed embedBuilder =
                 new EmbedBuilder()
                         .setTitle("Welcome to order your food")
@@ -41,8 +40,6 @@ public class WelcomeCommand implements Command {
                         .setImage(
                                 "https://news.cgtn.com/news/3d3d514d3551544d31457a6333566d54/img/d28dd1786f3e4bb598da6e577b369898/d28dd1786f3e4bb598da6e577b369898.jpg")
                         .build();
-        //        MessageBuilder messageBuilder = new MessageBuilder();
-        //        messageBuilder.setEmbeds(embedBuilder.build());
         event.replyEmbeds(embedBuilder).queue();
     }
 }
