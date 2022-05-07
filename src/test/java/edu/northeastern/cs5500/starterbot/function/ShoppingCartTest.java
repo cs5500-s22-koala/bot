@@ -77,5 +77,4 @@ public class ShoppingCartTest {
         assertEquals(shoppingCart.getPriceOfCartForUser(userId1), price1);
         assertEquals(shoppingCart.getPriceOfCartForUser(userId2), (Double) 0.0);
     }
-
 }
