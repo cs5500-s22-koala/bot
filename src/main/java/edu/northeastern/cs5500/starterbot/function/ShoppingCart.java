@@ -58,9 +58,9 @@ public class ShoppingCart {
         StringBuilder sb = new StringBuilder();
         HashMap<Dish, Integer> user_cart = cart.get(discordUserId);
         for (Dish dish : user_cart.keySet()) {
-            sb.append(dish.getDishName() + ": " + user_cart.get(dish) + "\n");
+            sb.append(dish.getDishName()).append(": ").append(user_cart.get(dish)).append("\n");
         }
-        sb.append("Total price: $" + getPriceOfCartForUser(discordUserId) + "\n");
+        sb.append("Total price: $").append(getPriceOfCartForUser(discordUserId)).append("\n");
         return sb.toString();
     }
 
@@ -83,5 +83,13 @@ public class ShoppingCart {
             res.put(dish.getDishName(), usercart.get(dish));
         }
         return res;
+    }
+
+    public HashMap<String, HashMap<Dish, Integer>> getCart() {
+        return this.cart;
+    }
+
+    public HashMap<String, String> getUser_to_restaurant() {
+        return this.user_to_restaurant;
     }
 }

@@ -12,7 +12,7 @@ public class DishController {
     GenericRepository<Dish> dishRepository;
 
     @Inject
-    DishController(GenericRepository<Dish> dishRepository) {
+    public DishController(GenericRepository<Dish> dishRepository) {
         this.dishRepository = dishRepository;
     }
 
