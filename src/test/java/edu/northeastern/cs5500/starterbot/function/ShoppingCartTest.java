@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import edu.northeastern.cs5500.starterbot.controller.DishController;
 import edu.northeastern.cs5500.starterbot.model.Dish;
 import edu.northeastern.cs5500.starterbot.repository.InMemoryRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ShoppingCartTest {
     ShoppingCart shoppingCart;
@@ -24,7 +24,7 @@ public class ShoppingCartTest {
         return dishController;
     }
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         shoppingCart = ShoppingCart.getInstance();
         dishController = getDishController();
