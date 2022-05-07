@@ -83,4 +83,10 @@ public class CommandModule {
             GetCustomerOnNameCommand getCustomerOnNameCommand) {
         return getCustomerOnNameCommand;
     }
+
+    @Provides
+    @IntoSet
+    public Command provideWelcomeCommand(WelcomeCommand welcomeCommand) {
+        return welcomeCommand;
+    }
 }

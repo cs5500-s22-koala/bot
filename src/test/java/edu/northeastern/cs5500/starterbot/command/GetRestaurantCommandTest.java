@@ -6,23 +6,23 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AddRestaurantCommandTest {
-    AddRestaurantCommand addRestaurantCommand;
+class GetRestaurantCommandTest {
+    GetRestaurantCommand getRestaurantCommand;
 
     @BeforeEach
     void setUp() {
-        addRestaurantCommand = new AddRestaurantCommand();
+        getRestaurantCommand = new GetRestaurantCommand();
     }
 
     @Test
     void getName() {
-        assertThat(addRestaurantCommand.getName()).isEqualTo("add-restaurant");
+        assertThat(getRestaurantCommand.getName()).isEqualTo("get-restaurant");
     }
 
     @Test
     void getCommandData() {
         assertEquals(
-                addRestaurantCommand.getCommandData().getDescription(),
-                "Tell the bot what restaurant you want to add");
+                getRestaurantCommand.getCommandData().getDescription(),
+                "Tell the bot what restaurant name is");
     }
 }
