@@ -15,3 +15,6 @@ https://docs.google.com/document/d/1glZZfIXgMJwU51qItp0yTDijZ6vOwQllzYN9l8BbYj0/
 ![alt text](./images/flow1.jpg)
 ![alt text](./images/flow2.jpg)
 ![alt text](./images/flow3.jpg)
+### Unit tests
+We apply unit tests in our project and the coverage ratio is 61%.
+![alt text](./images/testcoverage.png)
