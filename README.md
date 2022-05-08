@@ -1,4 +1,5 @@
 ## CS5500 Koala Team Project - DashBot
+### Team members: Wei Yan, Yaqian Liu, and Qiong Peng
 ### Final Presentation Video
 https://youtu.be/zzoccPDgRWs
 ### Invitation Link to our Discord Bot
