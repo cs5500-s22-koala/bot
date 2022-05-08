@@ -14,5 +14,3 @@ https://docs.google.com/document/d/1glZZfIXgMJwU51qItp0yTDijZ6vOwQllzYN9l8BbYj0/
 ![alt text](./images/flow1.jpg)
 ![alt text](./images/flow2.jpg)
 ![alt text](./images/flow3.jpg)
-
-
