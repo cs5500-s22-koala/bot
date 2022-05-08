@@ -1,5 +1,6 @@
 package edu.northeastern.cs5500.starterbot.dropdown;
 
+import edu.northeastern.cs5500.starterbot.annotation.ExcludeFromJacocoGeneratedReport;
 import edu.northeastern.cs5500.starterbot.button.ButtonClickHandler;
 import edu.northeastern.cs5500.starterbot.command.Command;
 import edu.northeastern.cs5500.starterbot.controller.DishController;
@@ -59,6 +60,7 @@ public class GetMenuOfRestaurantCommand
                                 .setRequired(true));
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public void onEvent(CommandInteraction event) {
         log.info("event: /get menu of restaurant Command");
@@ -85,6 +87,7 @@ public class GetMenuOfRestaurantCommand
         }
     }
 
+    @ExcludeFromJacocoGeneratedReport
     public SelectionMenu createSelectionMenu(List<Dish> menuOfRestaurant) {
         SelectionMenu.Builder menu =
                 SelectionMenu.create(this.getName() + ":menu") // can be accessed through
@@ -104,6 +107,7 @@ public class GetMenuOfRestaurantCommand
         return menu.build();
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public void onSelectionMenu(@Nonnull SelectionMenuEvent event) {
         SelectOption option = event.getInteraction().getSelectedOptions().get(0);
@@ -151,6 +155,7 @@ public class GetMenuOfRestaurantCommand
         }
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public void onButtonClick(ButtonClickEvent event) {
         String buttonId = event.getButton().getId().split(":")[1];
@@ -185,6 +190,7 @@ public class GetMenuOfRestaurantCommand
         }
     }
 
+    @ExcludeFromJacocoGeneratedReport
     public String placeOrder(String discordUserId) {
         int orderId = orderController.generateOrderId();
         double expense = shoppingCart.getPriceOfCartForUser(discordUserId);

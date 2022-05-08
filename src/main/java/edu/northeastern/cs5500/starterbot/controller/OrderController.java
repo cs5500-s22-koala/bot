@@ -12,7 +12,7 @@ public class OrderController {
     GenericRepository<Order> orderRepository;
 
     @Inject
-    OrderController(GenericRepository<Order> orderRepository) {
+    public OrderController(GenericRepository<Order> orderRepository) {
         this.orderRepository = orderRepository;
     }
 
