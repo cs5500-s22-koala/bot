@@ -1,6 +1,6 @@
 package edu.northeastern.cs5500.starterbot.controller;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 import edu.northeastern.cs5500.starterbot.model.Order;
 import edu.northeastern.cs5500.starterbot.repository.InMemoryRepository;
@@ -22,13 +22,6 @@ public class OrderControllerTest {
                     put("dish2", 2);
                 }
             };
-    static final HashMap<String, Integer> itemsOrdered2 =
-            new HashMap<>() {
-                {
-                    put("dish3", 3);
-                    put("dish4", 4);
-                }
-            };
 
     private OrderController geOrderController() {
         OrderController orderController = new OrderController(new InMemoryRepository<>());
@@ -39,7 +32,7 @@ public class OrderControllerTest {
     public void testGenerateOrderId() {
         OrderController orderController = geOrderController();
         int orderId = orderController.generateOrderId();
-        assertEquals(orderId, 1);
+        assertThat(orderId).isEqualTo(1);
     }
 
     @Test
@@ -47,7 +40,7 @@ public class OrderControllerTest {
         OrderController orderController = geOrderController();
 
         // before add an order
-        assertEquals(orderController.orderRepository.count(), 0);
+        assertThat(orderController.orderRepository.count()).isEqualTo(0);
 
         // add an order
         orderController.addOrder(
@@ -56,7 +49,7 @@ public class OrderControllerTest {
                 restaurantName1,
                 itemsOrdered1,
                 totcharge1);
-        assertEquals(orderController.orderRepository.count(), 1);
+        assertThat(orderController.orderRepository.count()).isEqualTo(1);
 
         // retrive objectId of order1
         ObjectId objId = null;
@@ -72,11 +65,11 @@ public class OrderControllerTest {
         // update order1 customer Id
         order1.setCustomerId(customerId2);
         orderController.orderRepository.add(order1);
-        assertEquals(orderController.orderRepository.count(), 1);
+        assertThat(orderController.orderRepository.count()).isEqualTo(1);
 
         // delete an order from in memory repository
         orderController.orderRepository.delete(objId);
-        assertEquals(orderController.orderRepository.count(), 0);
+        assertThat(orderController.orderRepository.count()).isEqualTo(0);
     }
 
     @Test
@@ -89,7 +82,7 @@ public class OrderControllerTest {
                 restaurantName1,
                 itemsOrdered1,
                 totcharge1);
-        assertFalse(orderController.checkOrderStatus(1));
+        assertThat(orderController.checkOrderStatus(1)).isFalse();
 
         // order has been delivered
         for (Order order : orderController.orderRepository.getAll()) {
@@ -98,6 +91,6 @@ public class OrderControllerTest {
                 break;
             }
         }
-        assertTrue(orderController.checkOrderStatus(1));
+        assertThat(orderController.checkOrderStatus(1)).isTrue();
     }
 }

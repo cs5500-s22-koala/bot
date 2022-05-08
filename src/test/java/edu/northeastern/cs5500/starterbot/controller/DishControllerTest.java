@@ -1,6 +1,6 @@
 package edu.northeastern.cs5500.starterbot.controller;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 import edu.northeastern.cs5500.starterbot.repository.InMemoryRepository;
 import org.junit.jupiter.api.Test;
@@ -23,18 +23,15 @@ public class DishControllerTest {
     public void testFindANullDish() {
         DishController dishController = getDishController();
         dishController.addDish(dishId1, dishName1, price1, restaurantName1);
-        assertNull(dishController.findADish(dishName1, restaurantName2));
+        assertThat(dishController.findADish(dishName1, restaurantName2)).isEqualTo(null);
     }
 
     @Test
     public void testFindANonNullDish() {
         DishController dishController = getDishController();
         dishController.addDish(dishId1, dishName1, price1, restaurantName1);
-        assertTrue(
-                dishController
-                        .findADish(dishName1, restaurantName1)
-                        .getDishName()
-                        .equals(dishName1));
+        assertThat(dishController.findADish(dishName1, restaurantName1).getDishName())
+                .isEqualTo(dishName1);
     }
 
     @Test
@@ -42,11 +39,13 @@ public class DishControllerTest {
         // before price update
         DishController dishController = getDishController();
         dishController.addDish(dishId1, dishName1, price1, restaurantName1);
-        assertEquals(dishController.findADish(dishName1, restaurantName1).getPrice(), price1, 0);
+        assertThat(dishController.findADish(dishName1, restaurantName1).getPrice())
+                .isEqualTo(price1);
 
         // after price update
         dishController.updateDishPrice(dishId1, price2);
-        assertEquals(dishController.findADish(dishName1, restaurantName1).getPrice(), price2, 0);
+        assertThat(dishController.findADish(dishName1, restaurantName1).getPrice())
+                .isEqualTo(price2);
     }
 
     @Test
@@ -54,10 +53,10 @@ public class DishControllerTest {
         // return an empty list as menu
         DishController dishController = getDishController();
         dishController.addDish(dishId1, dishName1, price1, restaurantName1);
-        assertEquals(dishController.getMenuOfARestaurant(restaurantName2).size(), 0);
+        assertThat(dishController.getMenuOfARestaurant(restaurantName2).size()).isEqualTo(0);
 
         // return a non-empty list of menu
         dishController.addDish(dishId1, dishName1, price1, restaurantName2);
-        assertEquals(dishController.getMenuOfARestaurant(restaurantName2).size(), 1);
+        assertThat(dishController.getMenuOfARestaurant(restaurantName2).size()).isEqualTo(1);
     }
 }

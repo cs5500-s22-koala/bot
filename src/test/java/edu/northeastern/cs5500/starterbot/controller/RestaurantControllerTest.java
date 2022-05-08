@@ -1,7 +1,6 @@
 package edu.northeastern.cs5500.starterbot.controller;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.northeastern.cs5500.starterbot.model.Restaurant;
@@ -42,13 +41,13 @@ class RestaurantControllerTest {
                 operatingHours,
                 introduction);
         Restaurant restaurant = restaurantController.getSpecificRestaurantBasedOnName(name);
-        assertEquals(restaurant.getName(), name);
-        assertEquals(restaurant.getAddress(), address);
-        assertEquals(restaurant.getCuisineType(), cuisineType);
-        assertTrue(restaurant.getZipcode() == zipcode);
-        assertEquals(restaurant.getImageUrl(), imageUrl);
-        assertEquals(restaurant.getIntroduction(), introduction);
-        assertEquals(restaurant.getOperatingHours(), operatingHours);
+        assertThat(restaurant.getName()).isEqualTo(name);
+        assertThat(restaurant.getAddress()).isEqualTo(address);
+        assertThat(restaurant.getCuisineType()).isEqualTo(cuisineType);
+        assertThat(restaurant.getZipcode()).isEqualTo(zipcode);
+        assertThat(restaurant.getImageUrl()).isEqualTo(imageUrl);
+        assertThat(restaurant.getIntroduction()).isEqualTo(introduction);
+        assertThat(restaurant.getOperatingHours()).isEqualTo(operatingHours);
     }
 
     @Test
@@ -64,17 +63,17 @@ class RestaurantControllerTest {
                 operatingHours,
                 introduction);
         Restaurant restaurant = restaurantController.getSpecificRestaurantBasedOnName(name);
-        assertEquals(restaurant.getName(), name);
-        assertEquals(restaurant.getAddress(), address);
-        assertEquals(restaurant.getCuisineType(), cuisineType);
-        assertTrue(restaurant.getZipcode() == zipcode);
-        assertEquals(restaurant.getImageUrl(), imageUrl);
-        assertEquals(restaurant.getIntroduction(), introduction);
-        assertEquals(restaurant.getOperatingHours(), operatingHours);
+        assertThat(restaurant.getName()).isEqualTo(name);
+        assertThat(restaurant.getAddress()).isEqualTo(address);
+        assertThat(restaurant.getCuisineType()).isEqualTo(cuisineType);
+        assertThat(restaurant.getZipcode()).isEqualTo(zipcode);
+        assertThat(restaurant.getImageUrl()).isEqualTo(imageUrl);
+        assertThat(restaurant.getIntroduction()).isEqualTo(introduction);
+        assertThat(restaurant.getOperatingHours()).isEqualTo(operatingHours);
 
         // Search name that does not exit in database
         Restaurant restaurant2 = restaurantController.getSpecificRestaurantBasedOnName(name2);
-        assertTrue(restaurant2 == null);
+        assertThat(restaurant2).isNull();
     }
 
     @Test
@@ -99,9 +98,8 @@ class RestaurantControllerTest {
                 phone,
                 operatingHours,
                 introduction);
-        assertEquals(
-                restaurantController.getSpecificRestaurantBasedOnName(name).getCuisineType(),
-                cuisineTypeUpdated);
+        assertThat(restaurantController.getSpecificRestaurantBasedOnName(name).getCuisineType())
+                .isEqualTo(cuisineTypeUpdated);
     }
 
     @Test
