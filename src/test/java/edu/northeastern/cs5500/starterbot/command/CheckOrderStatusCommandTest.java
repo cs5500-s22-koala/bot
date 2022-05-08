@@ -21,8 +21,7 @@ class CheckOrderStatusCommandTest {
 
     @Test
     void getCommandData() {
-        assertEquals(
-                checkOrderStatusCommand.getCommandData().getDescription(),
-                "Tell the bot if you want to check order status");
+        assertThat(checkOrderStatusCommand.getCommandData().getDescription())
+                .isEqualTo("Tell the bot if you want to check order status");
     }
 }

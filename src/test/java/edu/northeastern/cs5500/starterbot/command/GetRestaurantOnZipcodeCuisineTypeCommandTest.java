@@ -22,8 +22,7 @@ class GetRestaurantOnZipcodeCuisineTypeCommandTest {
 
     @Test
     void getCommandData() {
-        assertEquals(
-                getRestaurantOnZipcodeCuisineTypeCommand.getCommandData().getDescription(),
-                "Tell the bot what zipcode and cuisine type you are looking for");
+        assertThat(getRestaurantOnZipcodeCuisineTypeCommand.getCommandData().getDescription())
+                .isEqualTo("Tell the bot what zipcode and cuisine type you are looking for");
     }
 }

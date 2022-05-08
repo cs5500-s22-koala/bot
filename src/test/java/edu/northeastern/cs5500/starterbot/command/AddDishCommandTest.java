@@ -6,21 +6,22 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class WelcomeCommandTest {
-    private WelcomeCommand welcomeCommand;
+class AddDishCommandTest {
+    AddDishCommand addDishCommand;
 
     @BeforeEach
     void setUp() {
-        welcomeCommand = new WelcomeCommand();
+        addDishCommand = new AddDishCommand();
     }
 
     @Test
     void getName() {
-        assertThat(welcomeCommand.getName()).isEqualTo("welcome");
+        assertThat(addDishCommand.getName()).isEqualTo("add-dish");
     }
 
     @Test
     void getCommandData() {
-        assertThat(welcomeCommand.getCommandData().getDescription()).isEqualTo("Welcome");
+        assertThat(addDishCommand.getCommandData().getDescription())
+                .isEqualTo("Tell the bot what dish you want to add");
     }
 }

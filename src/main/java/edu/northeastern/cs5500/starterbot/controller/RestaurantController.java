@@ -82,18 +82,6 @@ public class RestaurantController {
     }
 
     // If not found, return empty list
-    public List<Restaurant> getRestaurantsBasedOnCuisineType(String cuisineType) {
-        Collection<Restaurant> restaurants = restaurantRepository.getAll();
-        List<Restaurant> result = new ArrayList<>();
-        for (Restaurant currentRestaurant : restaurants) {
-            if (currentRestaurant.getCuisineType().equals(cuisineType)) {
-                result.add(currentRestaurant);
-            }
-        }
-        return result;
-    }
-
-    // If not found, return empty list
     public List<Restaurant> getRestaurantsBasedOnZipcode(int zipcode) {
         Collection<Restaurant> restaurants = restaurantRepository.getAll();
         List<Restaurant> result = new ArrayList<>();
