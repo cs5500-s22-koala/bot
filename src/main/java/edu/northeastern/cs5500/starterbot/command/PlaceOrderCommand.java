@@ -1,5 +1,6 @@
 package edu.northeastern.cs5500.starterbot.command;
 
+import edu.northeastern.cs5500.starterbot.annotation.ExcludeFromJacocoGeneratedReport;
 import edu.northeastern.cs5500.starterbot.controller.OrderController;
 import edu.northeastern.cs5500.starterbot.function.ShoppingCart;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ public class PlaceOrderCommand implements Command {
         return new CommandData(getName(), "Tell the bot whether you want to place order");
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public void onEvent(@Nonnull CommandInteraction event) {
         log.info("event: /placeOrderCommand");

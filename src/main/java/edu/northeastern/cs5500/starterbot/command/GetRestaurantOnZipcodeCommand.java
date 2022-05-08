@@ -1,5 +1,6 @@
 package edu.northeastern.cs5500.starterbot.command;
 
+import edu.northeastern.cs5500.starterbot.annotation.ExcludeFromJacocoGeneratedReport;
 import edu.northeastern.cs5500.starterbot.controller.RestaurantController;
 import edu.northeastern.cs5500.starterbot.model.Restaurant;
 import java.util.List;
@@ -39,6 +40,7 @@ public class GetRestaurantOnZipcodeCommand implements Command {
                                 .setRequired(true));
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public void onEvent(@Nonnull CommandInteraction event) {
         log.info("event: /getRestaurantOnZipcode");
