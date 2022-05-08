@@ -1,5 +1,6 @@
 package edu.northeastern.cs5500.starterbot.command;
 
+import edu.northeastern.cs5500.starterbot.annotation.ExcludeFromJacocoGeneratedReport;
 import java.awt.Color;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -31,6 +32,7 @@ public class WelcomeCommand implements Command {
         return new CommandData(getName(), "Welcome");
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public void onEvent(@NotNull CommandInteraction event) {
         log.info("event: /welcome");

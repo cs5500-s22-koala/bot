@@ -1,5 +1,6 @@
 package edu.northeastern.cs5500.starterbot.command;
 
+import edu.northeastern.cs5500.starterbot.annotation.ExcludeFromJacocoGeneratedReport;
 import edu.northeastern.cs5500.starterbot.controller.OrderController;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -37,6 +38,7 @@ public class CheckOrderStatusCommand implements Command {
                                 .setRequired(true));
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public void onEvent(@Nonnull CommandInteraction event) {
         int orderId = (int) event.getOption("orderid").getAsLong();

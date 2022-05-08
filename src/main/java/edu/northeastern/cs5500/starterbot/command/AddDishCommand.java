@@ -1,5 +1,6 @@
 package edu.northeastern.cs5500.starterbot.command;
 
+import edu.northeastern.cs5500.starterbot.annotation.ExcludeFromJacocoGeneratedReport;
 import edu.northeastern.cs5500.starterbot.controller.DishController;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -55,6 +56,7 @@ public class AddDishCommand implements Command {
                                 .setRequired(true));
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public void onEvent(@Nonnull CommandInteraction event) {
         log.info("event: /addDishCommand");
