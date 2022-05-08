@@ -1,5 +1,6 @@
 package edu.northeastern.cs5500.starterbot.controller;
 
+import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -101,5 +102,53 @@ class RestaurantControllerTest {
         assertEquals(
                 restaurantController.getSpecificRestaurantBasedOnName(name).getCuisineType(),
                 cuisineTypeUpdated);
+    }
+
+    @Test
+    void testGetRestaurantsBasedOnZipcode() {
+        restaurantController.addRestaurant(
+                name,
+                cuisineType,
+                averageCostPerGuest,
+                address,
+                zipcode,
+                imageUrl,
+                phone,
+                operatingHours,
+                introduction);
+
+        assertThat(restaurantController.getRestaurantsBasedOnZipcode(zipcode).size() == 1);
+
+        assertThat(restaurantController.getRestaurantsBasedOnZipcode(12053).size() == 0);
+    }
+
+    @Test
+    void testGetRestaurantsBasedOnZipcodeCuisineType() {
+        restaurantController.addRestaurant(
+                name,
+                cuisineType,
+                averageCostPerGuest,
+                address,
+                zipcode,
+                imageUrl,
+                phone,
+                operatingHours,
+                introduction);
+
+        assertThat(
+                restaurantController
+                                .getRestaurantsBasedOnZipcodeCuisineType(zipcode, cuisineType)
+                                .size()
+                        == 1);
+
+        assertThat(
+                restaurantController
+                                .getRestaurantsBasedOnZipcodeCuisineType(12053, cuisineType)
+                                .size()
+                        == 0);
+
+        assertThat(
+                restaurantController.getRestaurantsBasedOnZipcodeCuisineType(zipcode, "Moon").size()
+                        == 0);
     }
 }

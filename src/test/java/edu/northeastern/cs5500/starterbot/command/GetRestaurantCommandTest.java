@@ -21,8 +21,7 @@ class GetRestaurantCommandTest {
 
     @Test
     void getCommandData() {
-        assertEquals(
-                getRestaurantCommand.getCommandData().getDescription(),
-                "Tell the bot what restaurant name is");
+        assertThat(getRestaurantCommand.getCommandData().getDescription())
+                .isEqualTo("Tell the bot what restaurant name is");
     }
 }

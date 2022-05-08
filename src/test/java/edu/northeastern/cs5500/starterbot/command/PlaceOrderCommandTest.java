@@ -16,9 +16,8 @@ class PlaceOrderCommandTest {
 
     @Test
     void getName() {
-        assertEquals(
-                placeOrderCommand.getCommandData().getDescription(),
-                "Tell the bot whether you want to place order");
+        assertThat(placeOrderCommand.getCommandData().getDescription())
+                .isEqualTo("Tell the bot whether you want to place order");
     }
 
     @Test
