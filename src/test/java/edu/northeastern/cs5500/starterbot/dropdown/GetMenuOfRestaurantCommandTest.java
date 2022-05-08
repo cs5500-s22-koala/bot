@@ -42,5 +42,4 @@ class GetMenuOfRestaurantCommandTest {
         assertThat(getMenuOfRestaurantCommand.getCommandData().getDescription())
                 .isEqualTo("Tell the bot which restaurant's menu you want to look at");
     }
-
 }

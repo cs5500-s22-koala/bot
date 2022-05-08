@@ -1,6 +1,6 @@
 package edu.northeastern.cs5500.starterbot.controller;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 import edu.northeastern.cs5500.starterbot.model.Customer;
 import edu.northeastern.cs5500.starterbot.repository.InMemoryRepository;
@@ -24,10 +24,10 @@ class CustomerControllerTest {
         CustomerController customerController = getCustomerController();
         Customer customer =
                 customerController.addCustomer(customerName, phone, address, bankAccount);
-        assertEquals(customer.getCustomerName(), customerName);
-        assertEquals(customer.getAddress(), address);
-        assertEquals(customer.getPhone(), phone);
-        assertEquals(customer.getBankAccount(), bankAccount);
+        assertThat(customer.getCustomerName()).isEqualTo(customerName);
+        assertThat(customer.getAddress()).isEqualTo(address);
+        assertThat(customer.getPhone()).isEqualTo(phone);
+        assertThat(customer.getBankAccount()).isEqualTo(bankAccount);
     }
 
     @Test
@@ -38,11 +38,11 @@ class CustomerControllerTest {
                 customerController.addCustomer(customerName, phone, address, bankAccount);
 
         // Search name that does not exists, return null
-        assertEquals(customerController.getSpecificCustomerBasedOnName(customerName2), null);
+        assertThat(customerController.getSpecificCustomerBasedOnName(customerName2)).isNull();
         // Search name that exists, return that object
         String name =
                 customerController.getSpecificCustomerBasedOnName(customerName).getCustomerName();
-        assertEquals(name, customerName);
+        assertThat(name).isEqualTo(customerName);
     }
 
     @Test
@@ -51,7 +51,7 @@ class CustomerControllerTest {
         Customer customer =
                 customerController.addCustomer(customerName, phone, address, bankAccount);
         customerController.updateCustomer(customerName, phone2, address, bankAccount);
-        assertEquals(
-                customerController.getSpecificCustomerBasedOnName(customerName).getPhone(), phone2);
+        assertThat(customerController.getSpecificCustomerBasedOnName(customerName).getPhone())
+                .isEqualTo(phone2);
     }
 }
